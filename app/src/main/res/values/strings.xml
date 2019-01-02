@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AppPencarianFilm</string>
+    <string name="movie_title_hint">Movie Title</string>
+
+    <!-- Dummy String -->
+    <string name="dummy_description">Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting.</string>
+    <string name="title_placeholder">Title</string>
+    <string name="rating">Rating</string>
+    <string name="language">language</string>
+    <string name="duration">duration</string>
+</resources>
