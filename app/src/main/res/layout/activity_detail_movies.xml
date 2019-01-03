@@ -1,161 +1,243 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/srl_main_wrapper"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
-    <!-- Header -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:paddingBottom="@dimen/activity_vertical_margin">
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/img_item_photo"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            tools:src="@android:color/darker_gray" />
-
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_10dp"
-            android:textAlignment="center"
-            android:textColor="@color/green"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            tools:text="@string/title_placeholder" />
-
-        <TextView
-            android:id="@+id/tv_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textSize="12sp"
-            android:textStyle="normal"
-            tools:text="@string/dummy_description" />
-
-        <!-- Rating, Duration, Language Wrapper -->
+        <!-- Global Wrapper -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal"
-            android:padding="@dimen/activity_vertical_margin"
-            android:weightSum="1">
+            android:orientation="vertical">
 
-            <!-- Rating Wrapper -->
+            <!-- Header -->
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
-                android:layout_weight="0.342">
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingBottom="@dimen/margin_5dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_item_photo"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    tools:src="@android:color/darker_gray" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_title"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#d40000"
-                    android:textSize="30sp"
-                    tools:text="7.0" />
+                    android:layout_marginTop="@dimen/margin_10dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/green"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    tools:text="@string/title_placeholder" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_description"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="12sp"
-                    tools:text="@string/rating" />
+                    android:textStyle="normal"
+                    tools:text="@string/dummy_description" />
+
+                <!-- Rating, Duration, Language Wrapper -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/activity_vertical_margin"
+                    android:weightSum="1">
+
+                    <!-- Rating Wrapper -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.342"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_rating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#d40000"
+                            android:textSize="30sp"
+                            tools:text="7.0" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/black"
+                            android:textSize="12sp"
+                            tools:text="@string/rating" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.004"
+                        android:background="@android:color/darker_gray" />
+
+                    <!-- Duration Wrapper -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.3"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_duration"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#d40000"
+                            android:textSize="30sp"
+                            tools:text="121" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/black"
+                            android:textSize="12sp"
+                            tools:text="@string/duration" />
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.004"
+                        android:background="@android:color/darker_gray" />
+
+                    <!-- Duration Wrapper -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.342"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_language"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#d40000"
+                            android:textSize="30sp"
+                            tools:text="EN" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/black"
+                            android:textSize="12sp"
+                            tools:text="@string/language" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center_vertical"
-                android:background="@android:color/darker_gray"
-                android:layout_weight="0.004"/>
-
-            <!-- Duration Wrapper -->
+            <!-- Content-->
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
                 android:orientation="vertical"
-                android:layout_weight="0.3">
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:paddingEnd="0dp"
+                android:visibility="visible">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#d40000"
-                    android:textSize="30sp"
-                    tools:text="121" />
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:text="Genres" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@android:color/black"
-                    android:textSize="12sp"
-                    tools:text="@string/duration" />
-
+                <!-- Content -->
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_genre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center_vertical"
-                android:background="@android:color/darker_gray"
-                android:layout_weight="0.004"/>
-
-            <!-- Duration Wrapper -->
+            <!-- Release Date -->
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
                 android:orientation="vertical"
-                android:layout_weight="0.342">
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:paddingEnd="0dp"
+                android:paddingBottom="@dimen/margin_10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#d40000"
-                    android:textSize="30sp"
-                    tools:text="EN" />
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:text="Relese" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@android:color/black"
-                    android:textSize="12sp"
-                    tools:text="@string/language" />
-
+                    android:paddingTop="@dimen/margin_5dp"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:textSize="16sp"
+                    android:textStyle="normal"
+                    tools:text="2020-05-01" />
 
             </LinearLayout>
 
+
+            <!-- Overview -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:paddingEnd="0dp"
+                android:paddingBottom="@dimen/margin_10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:text="Overview" />
+
+                <TextView
+                    android:id="@+id/tv_overview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/margin_5dp"
+                    android:textSize="16sp"
+                    android:textStyle="normal"
+                    tools:text="@string/dummy_description" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
+    </ScrollView>
 
-    </LinearLayout>
-
-    <!-- Content-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Genres"
-            android:textColor="@android:color/black"/>
-
-    </LinearLayout>
-
-</LinearLayout>
+</android.support.v4.widget.SwipeRefreshLayout>
