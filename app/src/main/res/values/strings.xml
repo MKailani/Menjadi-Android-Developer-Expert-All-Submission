@@ -8,4 +8,7 @@
     <string name="rating">Rating</string>
     <string name="language">language</string>
     <string name="duration">duration</string>
+
+    <string name="no_data_text">Tidak ada data</string>
+    <string name="error_problem_text">Terjadi kesalahan server</string>
 </resources>

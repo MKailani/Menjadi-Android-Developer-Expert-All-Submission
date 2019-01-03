@@ -11,4 +11,4 @@
     android:paddingBottom="@dimen/margin_10dp"
     android:layout_margin="@dimen/margin_5dp"
     android:textColor="@android:color/black"
-    tools:text="Fantasy"/>
+    tools:text="Fantasy" />

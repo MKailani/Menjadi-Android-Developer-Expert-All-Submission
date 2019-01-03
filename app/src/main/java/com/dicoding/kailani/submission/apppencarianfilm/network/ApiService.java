@@ -9,11 +9,11 @@ import retrofit2.http.Query;
 
 public interface ApiService {
     @GET("search/movie")
-    Call<BaseResponse<Movie>> doSearchMovies(@Query("api_key") String  apiKey,
+    Call<Movie> doSearchMovies(@Query("api_key") String  apiKey,
                                         @Query("language") String language,
                                         @Query("query") String searchText);
 
     @GET("discover/movie")
-    Call<BaseResponse<Movie>> getAllMovies(@Query("api_key") String  apiKey,
+    Call<Movie> getAllMovies(@Query("api_key") String  apiKey,
                                         @Query("language") String language);
 }

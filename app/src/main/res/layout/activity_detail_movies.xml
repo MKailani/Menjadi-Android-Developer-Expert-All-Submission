@@ -198,6 +198,7 @@
                     tools:text="Relese" />
 
                 <TextView
+                    android:id="@+id/tv_release"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="@dimen/margin_5dp"

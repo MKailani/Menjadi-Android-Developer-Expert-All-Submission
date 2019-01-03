@@ -7,5 +7,5 @@ public interface BaseView {
 
     void loadContentError();
 
-    void refreshContent();
+    void memoryRelease();
 }

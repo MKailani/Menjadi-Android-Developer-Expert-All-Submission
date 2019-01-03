@@ -1,6 +1,7 @@
 package com.dicoding.kailani.submission.apppencarianfilm.view.adapter;
 
 import android.content.Context;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,9 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dicoding.kailani.submission.apppencarianfilm.R;
 import com.dicoding.kailani.submission.apppencarianfilm.model.MovieDetail;
+import com.dicoding.kailani.submission.apppencarianfilm.utils.Utils;
+import com.dicoding.kailani.submission.apppencarianfilm.view.activity.MainView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +27,11 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     private Context mContext;
     private List<MovieDetail> mDataset = new ArrayList<>();
+    private MainView mView;
 
-    public MoviesAdapter(Context mContext) {
+    public MoviesAdapter(Context mContext, MainView mView) {
         this.mContext = mContext;
+        this.mView = mView;
     }
 
     public void addList(List<MovieDetail> data){
@@ -38,6 +42,15 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public void clearList(){
         mDataset.clear();
         this.notifyDataSetChanged();
+    }
+
+
+    public List<MovieDetail> getDataset() {
+        return mDataset;
+    }
+
+    public void setDataset(List<MovieDetail> dataset) {
+        mDataset = dataset;
     }
 
     @NonNull
@@ -55,7 +68,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         MovieViewHolder movieVH = (MovieViewHolder)viewHolder;
         MovieDetail movie = mDataset.get(position);
 
-
+        Utils.loadImage(movieVH.ivThumbnails,movie.getPosterPath());
         movieVH.tvTitle.setText(movie.getTitle());
         movieVH.tvDescription.setText(movie.getOverview());
     }
@@ -77,8 +90,15 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         @BindView(R.id.tv_description)
         protected TextView tvDescription;
 
-        public MovieViewHolder(@NonNull View itemView) {
+        protected MovieViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mView.goToNextActivity(mDataset.get(getAdapterPosition()));
+                }
+            });
         }
     }
 

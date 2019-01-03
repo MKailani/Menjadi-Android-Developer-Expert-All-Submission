@@ -18,6 +18,7 @@ public abstract class BaseViewHolder extends RecyclerView.ViewHolder {
         unbinder = ButterKnife.bind(this,itemView);
     }
 
+
     public void clearView(){
         if(unbinder !=null) unbinder.unbind();
     }

@@ -18,12 +18,12 @@ android {
     buildTypes {
         debug {
             buildConfigField "String", "MOVIE_URL", String.format("\"%s\"", "https://api.themoviedb.org/3/")
-            buildConfigField "String", "IMAGE_LOAD_URL", String.format("\"%s\"", "https://image.tmdb.org/t/p/")
+            buildConfigField "String", "IMAGE_LOAD_URL", String.format("\"%s\"", "https://image.tmdb.org/t/p/w185/")
             buildConfigField "String", "API_KEY", String.format("\"%s\"", "9baedfb896da855a4b9c55f09c735f76")
         }
         release {
             buildConfigField "String", "MOVIE_URL", String.format("\"%s\"", "https://api.themoviedb.org/3/")
-            buildConfigField "String", "IMAGE_LOAD_URL", String.format("\"%s\"", "https://image.tmdb.org/t/p/")
+            buildConfigField "String", "IMAGE_LOAD_URL", String.format("\"%s\"", "https://image.tmdb.org/t/p/w185/")
             buildConfigField "String", "API_KEY", String.format("\"%s\"", "9baedfb896da855a4b9c55f09c735f76")
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             minifyEnabled false
@@ -55,9 +55,10 @@ dependencies {
 
     // Dependecy Injenction view Library
     implementation 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 
     // Image Loader
     implementation 'de.hdodenhof:circleimageview:2.2.0'
-    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
 }
