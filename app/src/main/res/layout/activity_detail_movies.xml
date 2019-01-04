@@ -192,7 +192,7 @@
                         android:id="@+id/rv_genre"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        tools:listitem="@layout/row_item_genre"
+                        tools:listitem="@layout/column_item_genre"
                         tools:orientation="horizontal"
                         tools:layoutManager="LinearLayoutManager"/>
 
