@@ -1,6 +1,7 @@
 package com.dicoding.kailani.submission.apppencarianfilm.view.activity;
 
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -10,7 +11,10 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
- * Created by Khay on 03/01/19.
+ * Dicoding Academy
+ * Submission 1 - Aplikasi Pencarian Film
+ *
+ * Created by Kailani on 04/01/19.
  */
 public abstract class BaseActivity extends AppCompatActivity {
     private Unbinder mUnbinder;
@@ -42,7 +46,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected CharSequence toText(Date value){
-        SimpleDateFormat sdfFormater = new SimpleDateFormat("dd-mm-yy", Locale.getDefault());
+        SimpleDateFormat sdfFormater = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         return sdfFormater.format(value);
     }
+
+    protected  CharSequence toReleaseDate(String value){
+        return TextUtils.isEmpty(value) ? "Comming Soon" : value;
+    }
+
+
 }

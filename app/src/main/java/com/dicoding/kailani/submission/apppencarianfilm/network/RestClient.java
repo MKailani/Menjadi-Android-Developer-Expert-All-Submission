@@ -9,6 +9,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.dicoding.kailani.submission.apppencarianfilm.BuildConfig.MOVIE_URL;
 
+/**
+ * Dicoding Academy
+ * Submission 1 - Aplikasi Pencarian Film
+ *
+ * Created by Kailani on 04/01/19.
+ */
 public class RestClient {
 
     private static final String BASE_URL = MOVIE_URL;
@@ -21,16 +27,17 @@ public class RestClient {
     }
 
     private RestClient(boolean longRequest) {
-        this(longRequest, MOVIE_URL);
+        this(longRequest, BASE_URL);
     }
 
-    public RestClient(boolean longRequest, String mBaseUrl) {
+    private RestClient(boolean longRequest, String mBaseUrl) {
         int TIMEOUT = TIMEOUT_DEFAULT;
 
         if (longRequest) {
             TIMEOUT = TIMEOUT_LONG;
         }
 
+        // Logging Service Success or not REST Client
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
@@ -38,7 +45,6 @@ public class RestClient {
         OkHttpClient.Builder okClientConfig = new OkHttpClient.Builder();
         okClientConfig.readTimeout(TIMEOUT, TimeUnit.SECONDS);
         okClientConfig.connectTimeout(TIMEOUT, TimeUnit.SECONDS);
-
 
         okClientConfig.addInterceptor(interceptor);
 

@@ -4,8 +4,7 @@ package com.dicoding.kailani.submission.apppencarianfilm.presenter;
 import android.support.annotation.NonNull;
 
 import com.dicoding.kailani.submission.apppencarianfilm.BuildConfig;
-import com.dicoding.kailani.submission.apppencarianfilm.model.Movie;
-import com.dicoding.kailani.submission.apppencarianfilm.model.MovieDetail;
+import com.dicoding.kailani.submission.apppencarianfilm.network.response.ResponseMovie;
 import com.dicoding.kailani.submission.apppencarianfilm.network.RestClient;
 import com.dicoding.kailani.submission.apppencarianfilm.view.activity.MainView;
 
@@ -13,6 +12,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Dicoding Academy
+ * Submission 1 - Aplikasi Pencarian Film
+ *
+ * Created by Kailani on 04/01/19.
+ */
 public class MainViewPresenter {
     private MainView mView;
     private RestClient mRestClient;
@@ -25,11 +30,12 @@ public class MainViewPresenter {
         this.mRestClient = new RestClient();
     }
 
-    public void getAllMovies(){
+    public void getAllMovies(int page){
         mView.showLoading();
-        mRestClient.getApiService().getAllMovies(API,LANGUGAGE).enqueue(new Callback<Movie>() {
+        mRestClient.getApiService().getAllMovies(API,LANGUGAGE,page).enqueue(new Callback<ResponseMovie>() {
             @Override
-            public void onResponse(@NonNull Call<Movie> call, @NonNull Response<Movie> response) {
+            public void onResponse(@NonNull Call<ResponseMovie> call, @NonNull Response<ResponseMovie> response) {
+                System.gc();
                 mView.dismissLoading();
                 if (response.isSuccessful()) {
                     if(response.body() != null){
@@ -42,7 +48,7 @@ public class MainViewPresenter {
             }
 
             @Override
-            public void onFailure(@NonNull Call<Movie> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<ResponseMovie> call, @NonNull Throwable t) {
                 mView.dismissLoading();
                 mView.loadContentError();
             }
@@ -50,11 +56,13 @@ public class MainViewPresenter {
 
     }
 
-    public void searchMovie(String textSearch){
+    public void searchMovie(int page,String textSearch){
+
         mView.showLoading();
-        mRestClient.getApiService().doSearchMovies(API,LANGUGAGE,textSearch).enqueue(new Callback<Movie>() {
+        mRestClient.getApiService().doSearchMovies(API,LANGUGAGE,page,textSearch).enqueue(new Callback<ResponseMovie>() {
             @Override
-            public void onResponse(@NonNull Call<Movie> call, @NonNull Response<Movie> response) {
+            public void onResponse(@NonNull Call<ResponseMovie> call, @NonNull Response<ResponseMovie> response) {
+                System.gc();
                 mView.dismissLoading();
                 if (response.isSuccessful()) {
                     if(response.body() != null){
@@ -66,15 +74,11 @@ public class MainViewPresenter {
             }
 
             @Override
-            public void onFailure(@NonNull Call<Movie> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<ResponseMovie> call, @NonNull Throwable t) {
                 mView.dismissLoading();
                 mView.loadContentError();
             }
         });
 
-    }
-
-    public void goToNextActivity(MovieDetail movieDetail){
-        mView.goToNextActivity(movieDetail);
     }
 }

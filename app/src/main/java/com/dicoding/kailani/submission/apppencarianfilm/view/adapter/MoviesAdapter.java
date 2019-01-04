@@ -1,7 +1,5 @@
 package com.dicoding.kailani.submission.apppencarianfilm.view.adapter;
 
-import android.content.Context;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,9 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dicoding.kailani.submission.apppencarianfilm.R;
-import com.dicoding.kailani.submission.apppencarianfilm.model.MovieDetail;
+import com.dicoding.kailani.submission.apppencarianfilm.model.Movie;
 import com.dicoding.kailani.submission.apppencarianfilm.utils.Utils;
 import com.dicoding.kailani.submission.apppencarianfilm.view.activity.MainView;
+import com.dicoding.kailani.submission.apppencarianfilm.view.adapter.viewholder.BaseViewHolder;
+import com.dicoding.kailani.submission.apppencarianfilm.view.adapter.viewholder.ProgressViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,56 +21,87 @@ import java.util.List;
 import butterknife.BindView;
 
 /**
- * Created by Khay on 03/01/19.
+ * Dicoding Academy
+ * Submission 1 - Aplikasi Pencarian Film
+ * <p>
+ * Created by Kailani on 04/01/19.
  */
 public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private Context mContext;
-    private List<MovieDetail> mDataset = new ArrayList<>();
+    private List<Movie> mDataset = new ArrayList<>();
     private MainView mView;
+    private final static int VIEW_PROGRESS = 0;
+    private final static int VIEW_ITEM = 1;
 
-    public MoviesAdapter(Context mContext, MainView mView) {
-        this.mContext = mContext;
+    public MoviesAdapter(MainView mView) {
         this.mView = mView;
     }
 
-    public void addList(List<MovieDetail> data){
+    public void addList(List<Movie> data) {
+        removeProgressBar();
         mDataset.addAll(data);
+        addProgressBar();
         this.notifyDataSetChanged();
     }
 
-    public void clearList(){
+    private void addProgressBar() {
+        mDataset.add(null);
+    }
+
+    public void removeProgressBar() {
+        if (getItemCount() > 0) {
+            if (mDataset.get(getItemCount() - 1) == null) {
+                mDataset.remove(getItemCount()-1);
+                notifyItemRemoved(getItemCount());
+            }
+        }
+    }
+
+    public void clearList() {
         mDataset.clear();
         this.notifyDataSetChanged();
     }
 
 
-    public List<MovieDetail> getDataset() {
+    public List<Movie> getDataset() {
         return mDataset;
     }
 
-    public void setDataset(List<MovieDetail> dataset) {
-        mDataset = dataset;
+    @Override
+    public int getItemViewType(int position) {
+        return mDataset.get(position) != null ? VIEW_ITEM : VIEW_PROGRESS;
     }
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
 
-        View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.row_item_movie,viewGroup,false) ;
+        if (viewType == VIEW_ITEM) {
+            View view = LayoutInflater.from(viewGroup.getContext())
+                    .inflate(R.layout.row_item_movie, viewGroup, false);
+            return new MovieViewHolder(view);
+        } else {
+            View view = LayoutInflater.from(viewGroup.getContext())
+                    .inflate(R.layout.row_item_progressbar, viewGroup, false);
+            return new ProgressViewHolder(view);
+        }
 
-        return new MovieViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
-        MovieViewHolder movieVH = (MovieViewHolder)viewHolder;
-        MovieDetail movie = mDataset.get(position);
+        if (getItemViewType(position) == VIEW_ITEM) {
+            MovieViewHolder movieVH = (MovieViewHolder) viewHolder;
+            Movie movie = mDataset.get(position);
 
-        Utils.loadImage(movieVH.ivThumbnails,movie.getPosterPath());
-        movieVH.tvTitle.setText(movie.getTitle());
-        movieVH.tvDescription.setText(movie.getOverview());
+            Utils.loadImage(movieVH.ivThumbnails, movie.getPosterPath());
+            movieVH.tvTitle.setText(movie.getTitle());
+            movieVH.tvDescription.setText(movie.getOverview());
+        } else {
+            ProgressViewHolder progressVH = (ProgressViewHolder) viewHolder;
+            progressVH.pbLoading.setIndeterminate(true);
+        }
+
     }
 
     @Override
@@ -79,18 +110,18 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
 
-    protected class MovieViewHolder extends BaseViewHolder{
+    class MovieViewHolder extends BaseViewHolder {
 
         @BindView(R.id.iv_thumbnails)
-        protected ImageView ivThumbnails;
+        ImageView ivThumbnails;
 
         @BindView(R.id.tv_title)
-        protected TextView tvTitle;
+        TextView tvTitle;
 
         @BindView(R.id.tv_description)
-        protected TextView tvDescription;
+        TextView tvDescription;
 
-        protected MovieViewHolder(@NonNull View itemView) {
+        MovieViewHolder(@NonNull View itemView) {
             super(itemView);
 
             itemView.setOnClickListener(new View.OnClickListener() {

@@ -64,7 +64,7 @@
                 android:maxLines="3"
                 android:ellipsize="end"
                 android:textColor="@android:color/black"
-                tools:text="@string/dummy_description" />
+                tools:text="@string/description_placeholder" />
 
         </LinearLayout>
 

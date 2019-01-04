@@ -1,6 +1,5 @@
 package com.dicoding.kailani.submission.apppencarianfilm.view.adapter;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,7 +8,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.dicoding.kailani.submission.apppencarianfilm.R;
-import com.dicoding.kailani.submission.apppencarianfilm.view.activity.DetailMovieView;
+import com.dicoding.kailani.submission.apppencarianfilm.model.Genres;
+import com.dicoding.kailani.submission.apppencarianfilm.view.adapter.viewholder.BaseViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,26 +17,22 @@ import java.util.List;
 import butterknife.BindView;
 
 /**
- * Created by kheys on 04/01/19.
+ * Dicoding Academy
+ * Submission 1 - Aplikasi Pencarian Film
+ *
+ * Created by Kailani on 04/01/19.
  */
 public class GenreAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private int[] mGenreList;
-    private Context mContext;
-    private DetailMovieView mView;
+    private List<Genres> mGenreList = new ArrayList<>();
 
-    public GenreAdapter(Context context, DetailMovieView view) {
-        mContext = context;
-        mView = view;
-    }
-
-    public void addList(int[] mGenreList){
-        this.mGenreList = mGenreList;
+    public void addList(List<Genres> genres){
+        this.mGenreList.addAll(genres);
         this.notifyDataSetChanged();
     }
 
     public void clearList(){
-        this.mGenreList = null;
+        this.mGenreList.clear();
         this.notifyDataSetChanged();
     }
 
@@ -51,20 +47,23 @@ public class GenreAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
         GenreViewHolder genreVH =  (GenreViewHolder) viewHolder;
-        int genre = mGenreList[position];
+        Genres genre = mGenreList.get(position);
+
+        genreVH.mTvGenre.setText(genre.getName());
 
     }
 
     @Override
     public int getItemCount() {
-        return mGenreList.length;
+        return mGenreList.size();
     }
 
-    public class GenreViewHolder extends BaseViewHolder{
-        @BindView(R.id.tv_description)
-        TextView mTextView;
+    class GenreViewHolder extends BaseViewHolder {
 
-        public GenreViewHolder(@NonNull View itemView) {
+        @BindView(R.id.tv_genre)
+        TextView mTvGenre;
+
+        GenreViewHolder(@NonNull View itemView) {
             super(itemView);
         }
     }
