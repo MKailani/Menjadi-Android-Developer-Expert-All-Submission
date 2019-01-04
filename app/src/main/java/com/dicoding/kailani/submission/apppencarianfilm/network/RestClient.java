@@ -51,6 +51,7 @@ public class RestClient {
         // Set Inisialization Config OKHTTP for OKHttpClient
         OkHttpClient okClient = okClientConfig.build();
 
+        // Retrofit Client
         Retrofit retrofitClient = new Retrofit.Builder()
                 .baseUrl(mBaseUrl)
                 .client(okClient)
