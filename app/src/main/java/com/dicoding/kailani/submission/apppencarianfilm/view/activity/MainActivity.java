@@ -62,14 +62,13 @@ public class MainActivity extends BaseActivity implements MainView {
     private MainViewPresenter mMainViewPresenter;
     private MoviesAdapter adapter;
     private Handler mHandler;
-    private int page =1;
+    private int page = 1;
     private int counter = 1;
     private int totalItemCount;
     private int lastVisibleItem;
     private int lastItemCounter = 0;
     private boolean isLoading = false;
     private List<Movie> tempList;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,14 +87,14 @@ public class MainActivity extends BaseActivity implements MainView {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        if(adapter.getItemCount() > 0){
+        if (adapter.getItemCount() > 0) {
             adapter.removeProgressBar();
             outState.putParcelableArrayList(EXTRA_LIST, new ArrayList<>(adapter.getDataset()));
             outState.putInt(EXTRA_COUNTER, counter);
             outState.putInt(EXTRA_LAST_ITEM, lastItemCounter);
             outState.putInt(EXTRA_STATE_SCROLL_POSITION, llManager.findFirstCompletelyVisibleItemPosition());
-        }else{
-            if(tempList !=null)
+        } else {
+            if (tempList != null)
                 outState.putParcelableArrayList(EXTRA_LIST, new ArrayList<>(tempList));
 
             outState.putInt(EXTRA_COUNTER, 1);
@@ -121,7 +120,7 @@ public class MainActivity extends BaseActivity implements MainView {
                 ArrayList<Movie> list = saveInstance.getParcelableArrayList(EXTRA_LIST);
                 counter = saveInstance.getInt(EXTRA_COUNTER);
                 lastItemCounter = saveInstance.getInt(EXTRA_LAST_ITEM);
-                if(list !=null)
+                if (list != null)
                     adapter.addList(list);
                 tvDesc.setVisibility(adapter.getItemCount() == 0 ?
                         View.VISIBLE : View.GONE);
@@ -132,8 +131,6 @@ public class MainActivity extends BaseActivity implements MainView {
     }
 
 
-
-
     @Override
     public void showMovie(ResponseMovie responseMovie) {
         if (adapter != null) {
@@ -141,13 +138,13 @@ public class MainActivity extends BaseActivity implements MainView {
             this.tempList = responseMovie.getMovieDetailList();
 
             // Check Maximum Item Count
-            if( adapter.getItemCount() <= responseMovie.getTotalResult()){
+            if (adapter.getItemCount() <= responseMovie.getTotalResult()) {
                 adapter.addList(responseMovie.getMovieDetailList());
 
-                if(adapter.getItemCount() >= responseMovie.getTotalResult()){
+                if (adapter.getItemCount() >= responseMovie.getTotalResult()) {
                     adapter.removeProgressBar();
 
-                    if(adapter.getItemCount() > 0)
+                    if (adapter.getItemCount() > 0)
                         Toast.makeText(this, R.string.message_warning_all_movie_loaded, Toast.LENGTH_LONG).show();
                 }
             }
@@ -157,18 +154,18 @@ public class MainActivity extends BaseActivity implements MainView {
                     View.VISIBLE : View.GONE);
 
             // Check Maximum Counter Page
-            if(counter <= responseMovie.getTotalPage())
+            if (counter <= responseMovie.getTotalPage())
                 counter = (adapter.getItemCount() / 20) + 1;
 
             lastItemCounter = adapter.getItemCount();
 
             // First Load Scroll top
-            if(page == 1){
+            if (page == 1) {
                 mHandler.removeCallbacksAndMessages(null);
                 mHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        if(rvMovies !=null)
+                        if (rvMovies != null)
                             rvMovies.smoothScrollToPosition(0);
                     }
                 }, 500);
@@ -200,7 +197,7 @@ public class MainActivity extends BaseActivity implements MainView {
             public void onClick(View view) {
                 if (!TextUtils.isEmpty(edtSearch.getText().toString())) {
                     resetList();
-                    mMainViewPresenter.searchMovie(page,edtSearch.getText().toString());
+                    mMainViewPresenter.searchMovie(page, edtSearch.getText().toString());
                 } else {
                     Toast.makeText(MainActivity.this, R.string.warning_message_movie_empty_search, Toast.LENGTH_SHORT).show();
                 }
@@ -255,10 +252,10 @@ public class MainActivity extends BaseActivity implements MainView {
                         totalItemCount = llManager.getItemCount();
                         lastVisibleItem = llManager.findLastVisibleItemPosition();
                         int visibleThreshold = 1;
-                        if(lastItemCounter > 19 && !isLoading() && totalItemCount <= lastVisibleItem +visibleThreshold){
+                        if (lastItemCounter > 19 && !isLoading() && totalItemCount <= lastVisibleItem + visibleThreshold) {
                             page = counter;
                             if (!TextUtils.isEmpty(edtSearch.getText().toString())) {
-                                mMainViewPresenter.searchMovie(page,edtSearch.getText().toString());
+                                mMainViewPresenter.searchMovie(page, edtSearch.getText().toString());
                             } else {
                                 mMainViewPresenter.getAllMovies(page);
                             }
@@ -300,13 +297,13 @@ public class MainActivity extends BaseActivity implements MainView {
                 : View.GONE);
     }
 
-    private void resetList(){
-        this.page =1;
-        this.counter =1;
+    private void resetList() {
+        this.page = 1;
+        this.counter = 1;
         this.lastItemCounter = 0;
         this.totalItemCount = 0;
         this.lastVisibleItem = 0;
-        if(adapter !=null){
+        if (adapter != null) {
             adapter.clearList();
         }
     }

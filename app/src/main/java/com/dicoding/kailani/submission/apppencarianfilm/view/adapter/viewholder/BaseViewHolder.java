@@ -18,11 +18,10 @@ public abstract class BaseViewHolder extends RecyclerView.ViewHolder {
 
     public BaseViewHolder(@NonNull View itemView) {
         super(itemView);
-        unbinder = ButterKnife.bind(this,itemView);
+        unbinder = ButterKnife.bind(this, itemView);
     }
 
-
-    public void clearView(){
-        if(unbinder !=null) unbinder.unbind();
+    public void clearView() {
+        if (unbinder != null) unbinder.unbind();
     }
 }

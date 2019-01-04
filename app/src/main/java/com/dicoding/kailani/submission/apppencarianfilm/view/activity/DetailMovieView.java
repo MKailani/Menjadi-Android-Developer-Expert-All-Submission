@@ -10,8 +10,12 @@ import com.dicoding.kailani.submission.apppencarianfilm.view.BaseView;
  */
 public interface DetailMovieView extends BaseView {
     void initView();
+
     void setupRecyclerview();
+
     void refreshContent();
+
     void setupListener();
+
     void setupToolbar(String text);
 }

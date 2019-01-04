@@ -24,25 +24,24 @@ public class MainViewPresenter {
     private final static String API = BuildConfig.API_KEY;
     private final static String LANGUGAGE = "en-US";
 
-
     public MainViewPresenter(MainView view) {
         this.mView = view;
         this.mRestClient = new RestClient();
     }
 
-    public void getAllMovies(int page){
+    public void getAllMovies(int page) {
         mView.showLoading();
-        mRestClient.getApiService().getAllMovies(API,LANGUGAGE,page).enqueue(new Callback<ResponseMovie>() {
+        mRestClient.getApiService().getAllMovies(API, LANGUGAGE, page).enqueue(new Callback<ResponseMovie>() {
             @Override
             public void onResponse(@NonNull Call<ResponseMovie> call, @NonNull Response<ResponseMovie> response) {
                 System.gc();
                 mView.dismissLoading();
                 if (response.isSuccessful()) {
-                    if(response.body() != null){
+                    if (response.body() != null) {
                         mView.showMovie(response.body());
 
                     }
-                }else{
+                } else {
                     mView.loadContentError();
                 }
             }
@@ -56,19 +55,19 @@ public class MainViewPresenter {
 
     }
 
-    public void searchMovie(int page,String textSearch){
+    public void searchMovie(int page, String textSearch) {
 
         mView.showLoading();
-        mRestClient.getApiService().doSearchMovies(API,LANGUGAGE,page,textSearch).enqueue(new Callback<ResponseMovie>() {
+        mRestClient.getApiService().doSearchMovies(API, LANGUGAGE, page, textSearch).enqueue(new Callback<ResponseMovie>() {
             @Override
             public void onResponse(@NonNull Call<ResponseMovie> call, @NonNull Response<ResponseMovie> response) {
                 System.gc();
                 mView.dismissLoading();
                 if (response.isSuccessful()) {
-                    if(response.body() != null){
+                    if (response.body() != null) {
                         mView.showMovie(response.body());
                     }
-                }else{
+                } else {
                     mView.loadContentError();
                 }
             }

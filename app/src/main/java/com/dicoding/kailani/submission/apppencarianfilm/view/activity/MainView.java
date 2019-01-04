@@ -14,8 +14,12 @@ import com.dicoding.kailani.submission.apppencarianfilm.view.BaseView;
  */
 public interface MainView extends BaseView {
     void setupRecyclerView(Bundle saveInstance);
+
     void showMovie(ResponseMovie responseMovie);
+
     void goToNextActivity(Movie movie);
+
     void setupToolbar(String text);
+
     void setupListener();
 }

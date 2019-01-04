@@ -26,12 +26,12 @@ public class GenreAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     private List<Genres> mGenreList = new ArrayList<>();
 
-    public void addList(List<Genres> genres){
+    public void addList(List<Genres> genres) {
         this.mGenreList.addAll(genres);
         this.notifyDataSetChanged();
     }
 
-    public void clearList(){
+    public void clearList() {
         this.mGenreList.clear();
         this.notifyDataSetChanged();
     }
@@ -46,7 +46,7 @@ public class GenreAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
-        GenreViewHolder genreVH =  (GenreViewHolder) viewHolder;
+        GenreViewHolder genreVH = (GenreViewHolder) viewHolder;
         Genres genre = mGenreList.get(position);
 
         genreVH.mTvGenre.setText(genre.getName());

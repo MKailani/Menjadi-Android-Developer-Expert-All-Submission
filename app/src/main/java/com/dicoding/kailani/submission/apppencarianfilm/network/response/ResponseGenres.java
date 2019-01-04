@@ -12,7 +12,6 @@ import java.util.List;
  *
  * Created by Kailani on 04/01/19.
  */
-
 public class ResponseGenres {
     @SerializedName("genres")
     private List<Genres> genres = new ArrayList<>();

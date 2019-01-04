@@ -38,8 +38,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_10dp"
                     android:textAlignment="center"
+                    android:paddingStart="@dimen/margin_10dp"
+                    android:paddingEnd="@dimen/margin_10dp"
                     android:textColor="@color/green"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     tools:text="@string/title_placeholder" />
 
@@ -49,6 +51,8 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
+                    android:paddingStart="@dimen/margin_10dp"
+                    android:paddingEnd="@dimen/margin_10dp"
                     android:textSize="12sp"
                     android:textStyle="normal"
                     tools:text="@string/description_placeholder" />
@@ -187,15 +191,17 @@
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/rv_genre"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        tools:listitem="@layout/row_item_genre"
+                        tools:orientation="horizontal"
+                        tools:layoutManager="LinearLayoutManager"/>
 
                     <TextView
                         android:id="@+id/tv_no_genre"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/no_genres"
-                        android:textColor="@android:color/black"
-                        android:textSize="12sp"
+                        android:textSize="16sp"
                         android:visibility="gone"/>
                 </RelativeLayout>
 

@@ -5,14 +5,11 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.Date;
-
 /**
  * Dicoding Academy
  * Submission 1 - Aplikasi Pencarian Film
  *
  * Created by Kailani on 04/01/19.
- *
  */
 public class Movie implements Parcelable {
     @SerializedName("vote_count")

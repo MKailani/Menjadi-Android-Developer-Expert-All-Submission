@@ -89,12 +89,12 @@ public class DetailMoviesActivity extends BaseActivity implements DetailMovieVie
         setupListener();
 
         // Check Orientation Change
-        if(savedInstanceState == null)
+        if (savedInstanceState == null)
             refreshContent();
-        else{
-            if(savedInstanceState.getBoolean(EXTRA_IS_LOADING)){
+        else {
+            if (savedInstanceState.getBoolean(EXTRA_IS_LOADING)) {
                 refreshContent();
-            }else{
+            } else {
                 setupRecyclerview();
                 initView();
             }
@@ -104,8 +104,8 @@ public class DetailMoviesActivity extends BaseActivity implements DetailMovieVie
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putParcelable(EXTRA_MOVIE_DETAIL,mMovie);
-        outState.putBoolean(EXTRA_IS_LOADING,srlRefresh.isRefreshing());
+        outState.putParcelable(EXTRA_MOVIE_DETAIL, mMovie);
+        outState.putBoolean(EXTRA_IS_LOADING, srlRefresh.isRefreshing());
     }
 
     @Override
@@ -125,7 +125,7 @@ public class DetailMoviesActivity extends BaseActivity implements DetailMovieVie
                 tvLanguage.setText(mMovie.getOriginalLanguage());
                 tvRelease.setText(toReleaseDate(mMovie.getReleaseDate()));
                 tvOverview.setText(TextUtils.isEmpty(mMovie.getOverview()) ?
-                                        getString(R.string.text_no_overview) : mMovie.getOverview());
+                        getString(R.string.text_no_overview) : mMovie.getOverview());
                 List<Genres> data = Genres.findGenre(mMovie.getGenreIds());
                 mGenreAdapter.addList(data);
                 tvNoGenre.setVisibility(data.size() == 0 ? View.VISIBLE : View.GONE);
@@ -217,7 +217,7 @@ public class DetailMoviesActivity extends BaseActivity implements DetailMovieVie
             mGenreAdapter = null;
         }
 
-        if(mHandler !=null){
+        if (mHandler != null) {
             mHandler.removeCallbacksAndMessages(null);
         }
 

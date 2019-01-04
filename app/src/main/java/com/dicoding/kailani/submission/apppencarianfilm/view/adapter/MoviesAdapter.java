@@ -23,7 +23,7 @@ import butterknife.BindView;
 /**
  * Dicoding Academy
  * Submission 1 - Aplikasi Pencarian Film
- * <p>
+ *
  * Created by Kailani on 04/01/19.
  */
 public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -51,7 +51,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public void removeProgressBar() {
         if (getItemCount() > 0) {
             if (mDataset.get(getItemCount() - 1) == null) {
-                mDataset.remove(getItemCount()-1);
+                mDataset.remove(getItemCount() - 1);
                 notifyItemRemoved(getItemCount());
             }
         }
@@ -61,7 +61,6 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         mDataset.clear();
         this.notifyDataSetChanged();
     }
-
 
     public List<Movie> getDataset() {
         return mDataset;

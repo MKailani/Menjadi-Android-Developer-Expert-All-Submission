@@ -22,7 +22,7 @@
     <string name="error_problem_text">Terjadi kesalahan server</string>
     <string name="no_data_text">Movie tidak ditemukan</string>
     <string name="message_warning_all_movie_loaded">All Movie Loaded</string>
-    <string name="no_genres">no genres</string>
+    <string name="no_genres">No genres</string>
     <string name="text_no_overview">No overview</string>
 
 </resources>

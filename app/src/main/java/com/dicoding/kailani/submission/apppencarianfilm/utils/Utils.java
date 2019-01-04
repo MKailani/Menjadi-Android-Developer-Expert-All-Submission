@@ -18,32 +18,30 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 public class Utils {
 
-    public static void loadImage(ImageView targetView,String path){
-
+    public static void loadImage(ImageView targetView, String path) {
         RequestOptions requestOptions = new RequestOptions()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .placeholder(R.color.grey);
 
         Glide.with(targetView.getContext())
-                .load(BuildConfig.IMAGE_LOAD_URL+path)
+                .load(BuildConfig.IMAGE_LOAD_URL + path)
                 .apply(requestOptions)
                 .into(targetView);
     }
 
-    public static void loadImage(CircleImageView targetView, String path){
-
+    public static void loadImage(CircleImageView targetView, String path) {
         RequestOptions requestOptions = new RequestOptions()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .centerCrop()
-                .override(100,100);
+                .override(100, 100);
 
         Glide.with(targetView.getContext())
-                .load(BuildConfig.IMAGE_LOAD_URL+path)
+                .load(BuildConfig.IMAGE_LOAD_URL + path)
                 .apply(requestOptions)
                 .into(targetView);
     }
 
-    public static String getMethodName(){
+    public static String getMethodName() {
         return new Exception().getStackTrace()[1].getMethodName();
     }
 }
