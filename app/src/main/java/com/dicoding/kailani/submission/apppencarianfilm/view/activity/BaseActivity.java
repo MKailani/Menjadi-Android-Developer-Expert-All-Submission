@@ -1,5 +1,6 @@
 package com.dicoding.kailani.submission.apppencarianfilm.view.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 
@@ -52,6 +53,12 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected CharSequence toReleaseDate(String value) {
         return TextUtils.isEmpty(value) ? "Comming Soon" : value;
+    }
+
+    protected void goToHomeScreen(){
+        Intent i = new Intent(Intent.ACTION_MAIN);
+        i.addCategory(Intent.CATEGORY_HOME);
+        startActivity(i);
     }
 
 }

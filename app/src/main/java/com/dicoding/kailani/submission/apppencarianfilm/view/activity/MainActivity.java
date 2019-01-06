@@ -35,8 +35,6 @@ public class MainActivity extends BaseActivity implements MainView, BottomNaviga
 
     private Fragment mCurrentFragment = null;
     private FragmentManager fragmentManager;
-    private int backstackCount;
-    private String backstackName;
 
     @BindView(R.id.toolbar)
     protected Toolbar toolbar;
@@ -50,6 +48,7 @@ public class MainActivity extends BaseActivity implements MainView, BottomNaviga
         setContentView(R.layout.activity_main);
 
         // Setup View
+        this.fragmentManager = getSupportFragmentManager();
         setupToolbar();
         setupListener();
 
@@ -102,6 +101,13 @@ public class MainActivity extends BaseActivity implements MainView, BottomNaviga
             fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
+            if(mCurrentFragment instanceof NowPlayingFragment)
+            {
+                if(fragmentManager.getBackStackEntryCount() - 2 >= 0){
+                    goToTopFragment();
+                }
+            }
+
             // Check backstack fragment
             if(TextUtils.isEmpty(tag)){
                 fragmentTransaction.addToBackStack(null);
@@ -145,7 +151,7 @@ public class MainActivity extends BaseActivity implements MainView, BottomNaviga
         // Toolbar Listener
         toolbarBottom.setOnNavigationItemSelectedListener(this);
 
-       /* fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+        fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             @Override
             public void onBackStackChanged() {
                 if(getCurrentFragment() !=null)
@@ -158,8 +164,9 @@ public class MainActivity extends BaseActivity implements MainView, BottomNaviga
                         setCheckedToolbarBottom(R.id.bottom_search);
                     }
                 }
+
             }
-        });*/
+        });
     }
 
     @Override
@@ -169,7 +176,7 @@ public class MainActivity extends BaseActivity implements MainView, BottomNaviga
         switch (menuItem.getItemId()){
             case R.id.bottom_now_playing:
                 NowPlayingFragment nowPlayingFragment = newInstance();
-                replaceFragment(nowPlayingFragment);
+                replaceFragment(nowPlayingFragment,NowPlayingFragment.TAG);
                 break;
             case R.id.bottom_up_comming:
                 UpCommingFragment upCommingFragment = UpCommingFragment.newInstance();
@@ -192,21 +199,27 @@ public class MainActivity extends BaseActivity implements MainView, BottomNaviga
 
     @Override
     public void onBackPressed() {
-//        backStackPopper();
+        backStackPopper();
+    }
+
+    public void goToTopFragment(){
+        fragmentManager = getSupportFragmentManager();
+        fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
     }
 
     private void backStackPopper(){
-        backstackCount = fragmentManager.getBackStackEntryCount();
+        int backstackCount = fragmentManager.getBackStackEntryCount();
         if(backstackCount - 2 >=0){
-            backstackName = fragmentManager.getBackStackEntryAt(backstackCount - 2).getName();
-            switch (backstackName){
-                case "NowPlayingFragment":
-                    fragmentManager.popBackStackImmediate();
-                    break;
-                default:
-                    fragmentManager.popBackStackImmediate();
-                    break;
+            String backstackName = fragmentManager.getBackStackEntryAt(backstackCount - 2).getName();
+            backstackName = backstackName != null ? backstackName : "";
+
+            if(TextUtils.isEmpty(backstackName)){
+                goToHomeScreen();
+            }else{
+                fragmentManager.popBackStackImmediate();
             }
+        }else{
+            goToHomeScreen();
         }
     }
 
