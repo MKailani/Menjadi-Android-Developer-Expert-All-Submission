@@ -138,6 +138,7 @@ public class NowPlayingFragment extends BaseFragment implements GeneralView, Swi
             rvMovies.setAdapter(adapter);
 
             if (saveInstance == null) {
+                showLoading();
                 mNowPlayingViewPresenter.getAllNowPlayingMovies(page);
             } else {
                 ArrayList<Movie> list = saveInstance.getParcelableArrayList(EXTRA_LIST);
@@ -250,7 +251,7 @@ public class NowPlayingFragment extends BaseFragment implements GeneralView, Swi
     @Override
     public void showLoading() {
         Log.i(TAG, "show loading");
-        if (this.isVisible() && srlRefresh != null && page == 1)
+        if (srlRefresh != null && page == 1)
             srlRefresh.setRefreshing(true);
 
         this.isLoading = true;
@@ -259,7 +260,7 @@ public class NowPlayingFragment extends BaseFragment implements GeneralView, Swi
     @Override
     public void dismissLoading() {
         Log.i(TAG, "dismiss loading");
-        if (this.isVisible() && srlRefresh != null && page == 1)
+        if (srlRefresh != null && page == 1)
             srlRefresh.setRefreshing(false);
 
 

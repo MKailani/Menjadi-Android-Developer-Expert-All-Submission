@@ -62,7 +62,7 @@ public class MainActivity extends BaseActivity implements MainView, BottomNaviga
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString(EXTRA_CURRENT_FRAGMENT,mCurrentFragment.getTag());
+        outState.putString(EXTRA_CURRENT_FRAGMENT,getCurrentFragment().getTag());
     }
 
     private void findFragment(String tagFragment){
@@ -104,10 +104,11 @@ public class MainActivity extends BaseActivity implements MainView, BottomNaviga
             // Clear Backstack if user click Now Playing
             if(mCurrentFragment instanceof NowPlayingFragment)
             {
-                if(fragmentManager.getBackStackEntryCount() - 2 >= 0){
+                 if(fragmentManager.getBackStackEntryCount() - 2 >= 0){
                     goToTopFragment();
                 }
-            }
+
+            };
 
             // Check backstack fragment
             if(TextUtils.isEmpty(tag)){
