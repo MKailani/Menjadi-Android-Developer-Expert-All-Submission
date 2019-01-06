@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.dicoding.kailani.submission.apppencarianfilm.R;
 import com.dicoding.kailani.submission.apppencarianfilm.model.Movie;
 import com.dicoding.kailani.submission.apppencarianfilm.utils.Utils;
-import com.dicoding.kailani.submission.apppencarianfilm.view.activity.MainView;
+import com.dicoding.kailani.submission.apppencarianfilm.view.activity.GeneralView;
 import com.dicoding.kailani.submission.apppencarianfilm.view.adapter.viewholder.BaseViewHolder;
 import com.dicoding.kailani.submission.apppencarianfilm.view.adapter.viewholder.ProgressViewHolder;
 
@@ -29,11 +29,11 @@ import butterknife.BindView;
 public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<Movie> mDataset = new ArrayList<>();
-    private MainView mView;
+    private GeneralView mView;
     private final static int VIEW_PROGRESS = 0;
     private final static int VIEW_ITEM = 1;
 
-    public MoviesAdapter(MainView mView) {
+    public MoviesAdapter(GeneralView mView) {
         this.mView = mView;
     }
 

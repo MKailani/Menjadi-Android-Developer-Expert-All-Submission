@@ -1,25 +1,14 @@
 package com.dicoding.kailani.submission.apppencarianfilm.view.activity;
 
-import android.os.Bundle;
-
-import com.dicoding.kailani.submission.apppencarianfilm.network.response.ResponseMovie;
-import com.dicoding.kailani.submission.apppencarianfilm.model.Movie;
-import com.dicoding.kailani.submission.apppencarianfilm.view.BaseView;
+import android.support.v4.app.Fragment;
 
 /**
- * Dicoding Academy
- * Submission 1 - Aplikasi Pencarian Film
- *
- * Created by Kailani on 04/01/19.
+ * Created by kheys on 06/01/19.
  */
-public interface MainView extends BaseView {
-    void setupRecyclerView(Bundle saveInstance);
-
-    void showMovie(ResponseMovie responseMovie);
-
-    void goToNextActivity(Movie movie);
-
-    void setupToolbar(String text);
-
+public interface MainView {
+    void setupToolbar();
+    void changeTitleBar(String text);
+    void replaceFragment(Fragment view);
+    void replaceFragment(Fragment view, String tag);
     void setupListener();
 }

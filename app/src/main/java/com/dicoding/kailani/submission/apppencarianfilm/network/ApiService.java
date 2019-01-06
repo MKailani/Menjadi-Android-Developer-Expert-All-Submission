@@ -23,4 +23,14 @@ public interface ApiService {
     Call<ResponseMovie> getAllMovies(@Query("api_key") String apiKey,
                                      @Query("language") String language,
                                      @Query("page") int page);
+
+    @GET("movie/now_playing")
+    Call<ResponseMovie> getNowPlayingMovies(@Query("api_key") String apiKey,
+                                     @Query("language") String language,
+                                     @Query("page") int page);
+
+    @GET("movie/upcoming")
+    Call<ResponseMovie> getUpCommingMovies(@Query("api_key") String apiKey,
+                                     @Query("language") String language,
+                                     @Query("page") int page);
 }

@@ -1,4 +1,4 @@
-package com.dicoding.kailani.submission.apppencarianfilm.presenter;
+package com.dicoding.kailani.submission.apppencarianfilm.presenter.activity;
 
 
 import android.support.annotation.NonNull;
@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 import com.dicoding.kailani.submission.apppencarianfilm.BuildConfig;
 import com.dicoding.kailani.submission.apppencarianfilm.network.response.ResponseMovie;
 import com.dicoding.kailani.submission.apppencarianfilm.network.RestClient;
-import com.dicoding.kailani.submission.apppencarianfilm.view.activity.MainView;
+import com.dicoding.kailani.submission.apppencarianfilm.view.activity.GeneralView;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,12 +19,12 @@ import retrofit2.Response;
  * Created by Kailani on 04/01/19.
  */
 public class MainViewPresenter {
-    private MainView mView;
+    private GeneralView mView;
     private RestClient mRestClient;
     private final static String API = BuildConfig.API_KEY;
     private final static String LANGUGAGE = "en-US";
 
-    public MainViewPresenter(MainView view) {
+    public MainViewPresenter(GeneralView view) {
         this.mView = view;
         this.mRestClient = new RestClient();
     }

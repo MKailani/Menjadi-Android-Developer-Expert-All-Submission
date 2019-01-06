@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AppPencarianFilm</string>
 
@@ -18,12 +19,12 @@
     <!--placeholder-->
     <string name="language_placeholder">en</string>
     <string name="title_placeholder">Title</string>
-    <string name="description_placeholder">Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting.</string>
+    <string name="description_placeholder">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
 
     <!-- Warning Message-->
-    <string name="warning_message_movie_empty_search">Masukan Movie yang anda cari!</string>
-    <string name="error_problem_text">Terjadi kesalahan server</string>
-    <string name="no_data_text">Movie tidak ditemukan</string>
+    <string name="warning_message_movie_empty_search">Enter the Movie you are looking for!</string>
+    <string name="error_problem_text">A server error has occurred</string>
+    <string name="no_data_text">Movie not found</string>
     <string name="message_warning_all_movie_loaded">All Movie Loaded</string>
     <string name="no_genres">No genres</string>
     <string name="text_no_overview">No overview</string>

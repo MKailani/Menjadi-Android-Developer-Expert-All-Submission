@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
@@ -73,6 +74,9 @@ public class DetailMoviesActivity extends BaseActivity implements DetailMovieVie
 
     @BindView(R.id.sv_wrapper)
     protected ScrollView svWrapper;
+
+    @BindView(R.id.top_toolbar)
+    protected Toolbar toolbar;
 
     private LinearLayoutManager mLinearLayoutManager;
     private Movie mMovie;
@@ -182,6 +186,7 @@ public class DetailMoviesActivity extends BaseActivity implements DetailMovieVie
 
     @Override
     public void setupToolbar(String text) {
+        setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle(text);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
