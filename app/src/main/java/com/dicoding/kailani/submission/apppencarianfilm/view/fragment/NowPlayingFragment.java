@@ -102,7 +102,6 @@ public class NowPlayingFragment extends BaseFragment implements GeneralView, Swi
     @Override
     public void onResume() {
         super.onResume();
-//        refreshContent();
     }
 
     @Override
@@ -215,33 +214,31 @@ public class NowPlayingFragment extends BaseFragment implements GeneralView, Swi
 
     @Override
     public void setupListener() {
-        if (this.isVisible()) {
-            // Infinite Scrolling Recyclerview
-            rvMovies.post(new Runnable() {
-                @Override
-                public void run() {
-                    rvMovies.addOnScrollListener(new RecyclerView.OnScrollListener() {
-                        @Override
-                        public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                            super.onScrolled(recyclerView, dx, dy);
-                            srlRefresh.setRefreshing(llManager.findLastVisibleItemPosition() == 0);
-                            totalItemCount = llManager.getItemCount();
-                            lastVisibleItem = llManager.findLastVisibleItemPosition();
-                            int visibleThreshold = 1;
-                            if (lastItemCounter > 19 && !isLoading() && totalItemCount <= lastVisibleItem + visibleThreshold) {
-                                page = counter;
-                                mNowPlayingViewPresenter.getAllNowPlayingMovies(page);
-                            }
+        // Infinite Scrolling Recyclerview
+        rvMovies.post(new Runnable() {
+            @Override
+            public void run() {
+                rvMovies.addOnScrollListener(new RecyclerView.OnScrollListener() {
+                    @Override
+                    public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                        super.onScrolled(recyclerView, dx, dy);
+                        srlRefresh.setRefreshing(llManager.findLastVisibleItemPosition() == 0);
+                        totalItemCount = llManager.getItemCount();
+                        lastVisibleItem = llManager.findLastVisibleItemPosition();
+                        int visibleThreshold = 1;
+                        if (lastItemCounter > 19 && !isLoading() && totalItemCount <= lastVisibleItem + visibleThreshold) {
+                            page = counter;
+                            mNowPlayingViewPresenter.getAllNowPlayingMovies(page);
                         }
-                    });
+                    }
+                });
 
 
-                }
-            });
+            }
+        });
 
-            // initialize Swipe Refresh
-            srlRefresh.setOnRefreshListener(this);
-        }
+        // initialize Swipe Refresh
+        srlRefresh.setOnRefreshListener(this);
     }
 
     @Override

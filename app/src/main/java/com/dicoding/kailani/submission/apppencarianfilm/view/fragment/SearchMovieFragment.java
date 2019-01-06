@@ -215,81 +215,79 @@ public class SearchMovieFragment extends BaseFragment implements GeneralView {
 
     @Override
     public void setupListener() {
-        if (this.isVisible()) {
-            // Button Search
-            btnSearch.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (!TextUtils.isEmpty(edtSearch.getText().toString())) {
-                        resetList();
-                        mSearchViewPresenter.searchMovie(page, edtSearch.getText().toString());
-                    } else {
-                        Toast.makeText(getActivity(), R.string.warning_message_movie_empty_search, Toast.LENGTH_SHORT).show();
+        // Button Search
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!TextUtils.isEmpty(edtSearch.getText().toString())) {
+                    resetList();
+                    mSearchViewPresenter.searchMovie(page, edtSearch.getText().toString());
+                } else {
+                    Toast.makeText(getActivity(), R.string.warning_message_movie_empty_search, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        // Edit text Search
+        edtSearch.post(new Runnable() {
+            @Override
+            public void run() {
+                edtSearch.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
                     }
-                }
-            });
 
-            // Edit text Search
-            edtSearch.post(new Runnable() {
-                @Override
-                public void run() {
-                    edtSearch.addTextChangedListener(new TextWatcher() {
-                        @Override
-                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                        }
+                    }
 
-                        @Override
-                        public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    @Override
+                    public void afterTextChanged(final Editable s) {
+                        if (mHandler != null) {
+                            mHandler.removeCallbacksAndMessages(null);
 
-                        }
-
-                        @Override
-                        public void afterTextChanged(final Editable s) {
-                            if (mHandler != null) {
-                                mHandler.removeCallbacksAndMessages(null);
-
-                                mHandler.postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        if (TextUtils.isEmpty(s.toString())) {
-                                            resetList();
-                                            mSearchViewPresenter.getAllMovies(page);
-                                        }
+                            mHandler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (TextUtils.isEmpty(s.toString())) {
+                                        resetList();
+                                        mSearchViewPresenter.getAllMovies(page);
                                     }
-                                }, 1000);
-
-                            }
-                        }
-                    });
-                }
-            });
-
-            // Infinite Scrolling Recyclerview
-            rvMovies.post(new Runnable() {
-                @Override
-                public void run() {
-                    rvMovies.addOnScrollListener(new RecyclerView.OnScrollListener() {
-                        @Override
-                        public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                            super.onScrolled(recyclerView, dx, dy);
-
-                            totalItemCount = llManager.getItemCount();
-                            lastVisibleItem = llManager.findLastVisibleItemPosition();
-                            int visibleThreshold = 1;
-                            if (lastItemCounter > 19 && !isLoading() && totalItemCount <= lastVisibleItem + visibleThreshold) {
-                                page = counter;
-                                if (!TextUtils.isEmpty(edtSearch.getText().toString())) {
-                                    mSearchViewPresenter.searchMovie(page, edtSearch.getText().toString());
-                                } else {
-                                    mSearchViewPresenter.getAllMovies(page);
                                 }
+                            }, 1000);
+
+                        }
+                    }
+                });
+            }
+        });
+
+        // Infinite Scrolling Recyclerview
+        rvMovies.post(new Runnable() {
+            @Override
+            public void run() {
+                rvMovies.addOnScrollListener(new RecyclerView.OnScrollListener() {
+                    @Override
+                    public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                        super.onScrolled(recyclerView, dx, dy);
+
+                        totalItemCount = llManager.getItemCount();
+                        lastVisibleItem = llManager.findLastVisibleItemPosition();
+                        int visibleThreshold = 1;
+                        if (lastItemCounter > 19 && !isLoading() && totalItemCount <= lastVisibleItem + visibleThreshold) {
+                            page = counter;
+                            if (!TextUtils.isEmpty(edtSearch.getText().toString())) {
+                                mSearchViewPresenter.searchMovie(page, edtSearch.getText().toString());
+                            } else {
+                                mSearchViewPresenter.getAllMovies(page);
                             }
                         }
-                    });
-                }
-            });
-        }
+                    }
+                });
+            }
+        });
     }
 
     @Override

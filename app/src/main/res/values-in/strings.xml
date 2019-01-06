@@ -4,7 +4,7 @@
     <string name="app_name">AppPencarianFilm</string>
 
     <!-- Title -->
-    <string name="movie_title_hint">Movie Title</string>
+    <string name="movie_title_hint">Judul Film</string>
     <string name="title_bar_search_movie">Cari Film</string>
     <string name="title_bar_now_playing">Sedang Tayang</string>
     <string name="title_bar_up_comming">Akan Datang</string>
