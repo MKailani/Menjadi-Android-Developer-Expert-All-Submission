@@ -11,9 +11,9 @@ import static com.dicoding.kailani.submission.apppencarianfilm.BuildConfig.MOVIE
 
 /**
  * Dicoding Academy
- * Submission 1 - Aplikasi Pencarian Film
+ * Submission 2 - Aplikasi Pencarian Film UI-UX
  *
- * Created by Kailani on 04/01/19.
+ * Created by Kailani on 06/01/19 -> Submssion 2
  */
 public class RestClient {
 

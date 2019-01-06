@@ -3,7 +3,10 @@ package com.dicoding.kailani.submission.apppencarianfilm.view.activity;
 import android.support.v4.app.Fragment;
 
 /**
- * Created by kheys on 06/01/19.
+ * Dicoding Academy
+ * Submission 2 - Aplikasi Pencarian Film UI-UX
+ *
+ * Created by Kailani on 06/01/19 -> Submssion 2
  */
 public interface MainView {
     void setupToolbar();

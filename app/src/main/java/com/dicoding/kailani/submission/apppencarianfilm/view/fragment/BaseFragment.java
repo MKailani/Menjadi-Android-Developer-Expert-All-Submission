@@ -10,7 +10,10 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
- * Created by kheys on 06/01/19.
+ * Dicoding Academy
+ * Submission 2 - Aplikasi Pencarian Film UI-UX
+ *
+ * Created by Kailani on 06/01/19 -> Submssion 2
  */
 public abstract class BaseFragment extends Fragment {
 
