@@ -101,6 +101,7 @@ public class MainActivity extends BaseActivity implements MainView, BottomNaviga
             fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
+            // Clear Backstack if user click Now Playing
             if(mCurrentFragment instanceof NowPlayingFragment)
             {
                 if(fragmentManager.getBackStackEntryCount() - 2 >= 0){
