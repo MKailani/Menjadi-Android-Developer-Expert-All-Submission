@@ -11,4 +11,4 @@
     android:paddingEnd="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/margin_10dp"
     android:textColor="@android:color/black"
-    tools:text="Fantasy" />
+    tools:text="@string/dummy_genre" />

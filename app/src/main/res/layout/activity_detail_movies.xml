@@ -24,6 +24,7 @@
 
             <!-- Global Wrapper -->
             <LinearLayout
+                android:id="@+id/ll_global_wrapper"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -39,8 +40,8 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/img_item_photo"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="@dimen/circle_dimension"
+                        android:layout_height="@dimen/circle_dimension"
                         tools:src="@android:color/darker_gray" />
 
                     <TextView
@@ -52,7 +53,7 @@
                         android:paddingEnd="@dimen/margin_10dp"
                         android:textAlignment="center"
                         android:textColor="@color/green"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/text_dimens_20sp"
                         android:textStyle="bold"
                         tools:text="@string/title_placeholder" />
 
@@ -64,7 +65,7 @@
                         android:paddingEnd="@dimen/margin_10dp"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textSize="12sp"
+                        android:textSize="@dimen/text_dimens_12sp"
                         android:textStyle="normal"
                         tools:text="@string/description_placeholder" />
 
@@ -90,22 +91,22 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textAlignment="center"
-                                android:textColor="#d40000"
-                                android:textSize="30sp"
-                                tools:text="7.0" />
+                                android:textColor="@color/red"
+                                android:textSize="@dimen/text_dimens_30sp"
+                                tools:text="@string/placeholder_value" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/rating"
                                 android:textColor="@android:color/black"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/text_dimens_12sp" />
 
                         </LinearLayout>
 
                         <View
                             android:layout_width="0dp"
-                            android:layout_height="20dp"
+                            android:layout_height="@dimen/line_vertical_20dp"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="0.004"
                             android:background="@android:color/darker_gray" />
@@ -123,23 +124,23 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textAlignment="center"
-                                android:textColor="#d40000"
-                                android:textSize="30sp"
-                                tools:text="121" />
+                                android:textColor="@color/red"
+                                android:textSize="@dimen/text_dimens_30sp"
+                                tools:text="@string/placeholder_value" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/duration"
                                 android:textColor="@android:color/black"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/text_dimens_12sp" />
 
 
                         </LinearLayout>
 
                         <View
                             android:layout_width="0dp"
-                            android:layout_height="20dp"
+                            android:layout_height="@dimen/line_vertical_20dp"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="0.004"
                             android:background="@android:color/darker_gray" />
@@ -157,8 +158,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textAlignment="center"
-                                android:textColor="#d40000"
-                                android:textSize="30sp"
+                                android:textColor="@color/red"
+                                android:textSize="@dimen/text_dimens_30sp"
                                 tools:text="@string/language_placeholder" />
 
                             <TextView
@@ -166,7 +167,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/language"
                                 android:textColor="@android:color/black"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/text_dimens_12sp" />
 
 
                         </LinearLayout>
@@ -191,7 +192,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/genres"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/text_dimens_16sp"
                         android:textStyle="bold" />
 
                     <!-- Content -->
@@ -212,7 +213,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/no_genres"
-                            android:textSize="16sp"
+                            android:textSize="@dimen/text_dimens_16sp"
                             android:visibility="gone" />
                     </RelativeLayout>
 
@@ -232,7 +233,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/release"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/text_dimens_16sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -241,9 +242,9 @@
                         android:layout_height="wrap_content"
                         android:paddingTop="@dimen/margin_5dp"
                         android:textColor="@android:color/holo_red_dark"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/text_dimens_16sp"
                         android:textStyle="normal"
-                        tools:text="2020-05-01" />
+                        tools:text="@string/placeholder_date" />
 
                 </LinearLayout>
 
@@ -262,7 +263,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/overview"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/text_dimens_16sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -270,7 +271,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="@dimen/margin_5dp"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/text_dimens_16sp"
                         android:textStyle="normal"
                         tools:text="@string/description_placeholder" />
 

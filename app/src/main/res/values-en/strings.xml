@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">AppPencarianFilm</string>
+    <string name="app_name">Movie Catalogue</string>
 
     <!-- Title -->
     <string name="movie_title_hint">Movie Title</string>
     <string name="title_bar_search_movie">Search Movie</string>
     <string name="title_bar_now_playing">Now Playing</string>
-    <string name="title_bar_up_comming">Up Comming</string>
+    <string name="title_bar_up_comming">Up Coming</string>
+    <string name="title_bar_favorite">Favorite</string>
     <string name="title_bar_setting_laguage">Change Language</string>
     <string name="search">Search</string>
     <string name="overview">Overview</string>
@@ -23,8 +24,12 @@
 
     <!-- Warning Message-->
     <string name="warning_message_movie_empty_search">Enter the Movie you are looking for!</string>
-    <string name="error_problem_text">A server error has occurred</string>
     <string name="no_data_text">Movie not found</string>
+    <string name="no_favorite_text">No Favorite</string>
+    <string name="add_favorite_message">Success add to favorite</string>
+    <string name="add_fail_favorite_message">Failed add to favorite</string>
+    <string name="remove_favorite_message">Success remove to favorite</string>
+    <string name="remove_fail_favorite_message">Failed remove to favorite</string>
     <string name="message_warning_all_movie_loaded">All Movie Loaded</string>
     <string name="no_genres">No genres</string>
     <string name="text_no_overview">No overview</string>

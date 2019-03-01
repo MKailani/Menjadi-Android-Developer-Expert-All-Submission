@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.dicoding.kailani.submission.apppencarianfilm"
+    package="com.dicoding.kailani.submission.moviecatalogue"
     tools:ignore="GoogleAppIndexingWarning">
 
+    <!-- Read Permisison Movie Catalogue Database-->
+    <permission android:name="com.dicoding.kailani.submission.moviecatalogue.READ_DATABASE" android:protectionLevel="normal" />
+    <permission android:name="com.dicoding.kailani.submission.moviecatalogue.WRITE_DATABASE" android:protectionLevel="normal" />
+
+    <!-- Internet Permission-->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".App"
+        android:name="com.dicoding.kailani.submission.moviecatalogue.App"
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,7 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.MainActivity"
+        <activity
+            android:name="com.dicoding.kailani.submission.moviecatalogue.view.activity.MainActivity"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +29,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.activity.DetailMoviesActivity"/>
+        <activity android:name="com.dicoding.kailani.submission.moviecatalogue.view.activity.DetailMoviesActivity" />
+
+
+        <provider
+            android:authorities="com.dicoding.kailani.submission.moviecatalogue"
+            android:name="com.dicoding.kailani.submission.moviecatalogue.database.provider.MovieProvider"
+            android:exported="true"
+            android:readPermission="com.dicoding.kailani.submission.moviecatalogue.READ_DATABASE"
+            android:writePermission="com.dicoding.kailani.submission.moviecatalogue.WRITE_DATABASE" />
+
     </application>
 
 </manifest>

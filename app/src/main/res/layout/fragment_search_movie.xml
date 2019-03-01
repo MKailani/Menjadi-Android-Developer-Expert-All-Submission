@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         cardView:cardBackgroundColor="@android:color/white"
-        cardView:cardCornerRadius="8dp"
+        cardView:cardCornerRadius="@dimen/corner_rad_8dp"
         cardView:contentPadding="@dimen/margin_10dp">
 
         <RelativeLayout
@@ -42,7 +42,7 @@
             <Button
                 android:id="@+id/btn_search"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="@dimen/button_normal_size"
                 android:layout_alignParentEnd="true"
                 android:background="@drawable/btn_pink_selector"
                 android:text="@string/search"

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">AppPencarianFilm</string>
+    <string name="app_name">Movie Catalogue</string>
 
     <!-- Title -->
     <string name="movie_title_hint">Judul Film</string>
     <string name="title_bar_search_movie">Cari Film</string>
     <string name="title_bar_now_playing">Sedang Tayang</string>
     <string name="title_bar_up_comming">Akan Datang</string>
+    <string name="title_bar_favorite">Favorit</string>
     <string name="title_bar_setting_laguage">Pilih Bahasa</string>
     <string name="search">Cari</string>
     <string name="overview">Overview</string>
@@ -24,8 +25,12 @@
 
     <!-- Warning Message-->
     <string name="warning_message_movie_empty_search">Masukan Movie yang anda cari!</string>
-    <string name="error_problem_text">Terjadi kesalahan server</string>
     <string name="no_data_text">Movie tidak ditemukan</string>
+    <string name="no_favorite_text">Tidak ada daftar favorite</string>
+    <string name="add_favorite_message">Berhasil menambahkan ke favorit</string>
+    <string name="add_fail_favorite_message">Gagal Menambahkan ke favorit</string>
+    <string name="remove_favorite_message">Berhasil menghapus ke favorit</string>
+    <string name="remove_fail_favorite_message">Gagal menghapus ke favorit</string>
     <string name="message_warning_all_movie_loaded">Semua Film Dimuat</string>
     <string name="no_genres">tidak ada kategori</string>
     <string name="text_no_overview">Tidak ada ulasan</string>

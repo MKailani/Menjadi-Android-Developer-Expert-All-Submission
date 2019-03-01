@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/margin_10dp"
-    cardView:cardElevation="2dp"
+    cardView:cardElevation="@dimen/elevation_shadow_2dp"
     cardView:contentPadding="0dp"
     android:foreground="?android:attr/selectableItemBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="@dimen/row_item_size_normal"
         android:baselineAligned="false"
         android:orientation="horizontal"
         android:weightSum="1">
@@ -51,7 +51,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:textColor="@android:color/black"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_dimens_16sp"
                 tools:text="Title Movie" />
 
             <!-- Description -->
@@ -63,7 +63,7 @@
                 android:ellipsize="end"
                 android:maxLines="3"
                 android:textColor="@android:color/black"
-                android:textSize="12sp"
+                android:textSize="@dimen/text_dimens_12sp"
                 tools:text="@string/description_placeholder" />
 
         </LinearLayout>
