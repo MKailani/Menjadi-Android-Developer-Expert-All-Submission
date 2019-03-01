@@ -1,2 +1,3 @@
 # MovieCatalogue
-Submission | Menjadi Android Developer Expert (MADE) | Dicoding Academy
+All Submission | Menjadi Android Developer Expert (MADE) | Dicoding Academy
+
