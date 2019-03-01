@@ -19,12 +19,14 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+
 import com.dicoding.kailani.submission.moviecatalogue.App;
 import com.dicoding.kailani.submission.moviecatalogue.R;
 import com.dicoding.kailani.submission.moviecatalogue.database.QueryHelper;
 import com.dicoding.kailani.submission.moviecatalogue.model.Genres;
 import com.dicoding.kailani.submission.moviecatalogue.model.Movie;
 import com.dicoding.kailani.submission.moviecatalogue.utils.Utils;
+import com.dicoding.kailani.submission.moviecatalogue.view.activity.iview.DetailMovieView;
 import com.dicoding.kailani.submission.moviecatalogue.view.adapter.GenreAdapter;
 
 import java.util.List;
@@ -34,13 +36,14 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.dicoding.kailani.submission.moviecatalogue.database.QueryHelper.CONTENT_URI_FAVORITE;
 
+
 /**
  * Dicoding Academy
- * <p>
- * Submisison 4 Aplikasi Movie Catalogue UI/UX DATABASE
- * Menjadi Developer Expert (MADE)
- * <p>
- * Created by kheys on 15/01/19.
+ *
+ * Final Project Aplikasi Movie Catalogue
+ * Menjadi Android Developer Expert (MADE)
+ *
+ * Created by kheys on 28/01/19.
  */
 public class DetailMoviesActivity extends BaseActivity implements DetailMovieView, SwipeRefreshLayout.OnRefreshListener {
     // TAG
@@ -149,7 +152,7 @@ public class DetailMoviesActivity extends BaseActivity implements DetailMovieVie
                 tvRating.setText(toText(mMovie.getVoteAverage()));
                 tvDuration.setText(toText(mMovie.getVoteCount()));
                 tvLanguage.setText(mMovie.getOriginalLanguage());
-                tvRelease.setText(toReleaseDate(mMovie.getReleaseDate()));
+                tvRelease.setText(Utils.toReleaseDate(mMovie.getReleaseDate()));
                 tvOverview.setText(TextUtils.isEmpty(mMovie.getOverview()) ?
                         getString(R.string.text_no_overview) : mMovie.getOverview());
                 List<Genres> data = Genres.findGenre(mMovie.getGenreIds());
@@ -299,10 +302,13 @@ public class DetailMoviesActivity extends BaseActivity implements DetailMovieVie
             Snackbar.make(llGlobalWrapper,
                     isFavorite ? R.string.add_favorite_message : R.string.remove_favorite_message
                     , Snackbar.LENGTH_SHORT).show();
+
         else
             Snackbar.make(llGlobalWrapper,
                     isFavorite ? R.string.add_fail_favorite_message : R.string.remove_fail_favorite_message
                     , Snackbar.LENGTH_SHORT).show();
+
+        doNotifyWidgetFavMovie();
     }
 
 

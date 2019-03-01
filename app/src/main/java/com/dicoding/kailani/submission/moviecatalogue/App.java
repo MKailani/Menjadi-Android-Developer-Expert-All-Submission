@@ -5,14 +5,15 @@ import android.database.sqlite.SQLiteException;
 
 import com.dicoding.kailani.submission.moviecatalogue.database.DatabaseHelper;
 import com.dicoding.kailani.submission.moviecatalogue.database.QueryHelper;
+import com.dicoding.kailani.submission.moviecatalogue.database.SharedPrefs;
 
 /**
  * Dicoding Academy
  *
- * Submisison 4 Aplikasi Movie Catalogue UI/UX DATABASE
- * Menjadi Developer Expert (MADE)
+ * Final Project Aplikasi Movie Catalogue
+ * Menjadi Android Developer Expert (MADE)
  *
- * Created by kheys on 21/01/19.
+ * Created by kheys on 28/01/19.
  */
 public class App extends Application {
 
@@ -24,7 +25,11 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
+        // Init Global Context
         initInstance();
+
+        // Initial Prefs
+        SharedPrefs.init(this);
 
         // Initial Database
         DatabaseHelper.init(this);

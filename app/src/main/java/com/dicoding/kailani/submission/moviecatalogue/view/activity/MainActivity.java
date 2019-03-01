@@ -14,6 +14,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.dicoding.kailani.submission.moviecatalogue.R;
+import com.dicoding.kailani.submission.moviecatalogue.database.SharedPrefs;
+import com.dicoding.kailani.submission.moviecatalogue.presenter.activity.SettingPresenter;
+import com.dicoding.kailani.submission.moviecatalogue.utils.PrefsConst;
+import com.dicoding.kailani.submission.moviecatalogue.view.activity.iview.MainView;
 import com.dicoding.kailani.submission.moviecatalogue.view.fragment.FavoriteFragment;
 import com.dicoding.kailani.submission.moviecatalogue.view.fragment.NowPlayingFragment;
 import com.dicoding.kailani.submission.moviecatalogue.view.fragment.SearchMovieFragment;
@@ -24,10 +28,10 @@ import butterknife.BindView;
 /**
  * Dicoding Academy
  *
- * Submisison 4 Aplikasi Movie Catalogue UI/UX DATABASE
- * Menjadi Developer Expert (MADE)
+ * Final Project Aplikasi Movie Catalogue
+ * Menjadi Android Developer Expert (MADE)
  *
- * Created by kheys on 21/01/19.
+ * Created by kheys on 28/01/19.
  */
 public class MainActivity extends BaseActivity implements MainView, BottomNavigationView.OnNavigationItemSelectedListener {
     private static final String EXTRA_CURRENT_FRAGMENT = "extra:current_fragment";
@@ -41,10 +45,14 @@ public class MainActivity extends BaseActivity implements MainView, BottomNaviga
     @BindView(R.id.bottom_navigation)
     protected BottomNavigationView toolbarBottom;
 
+    private SettingPresenter mSettingPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mSettingPresenter = new SettingPresenter(getApplicationContext());
 
         // Setup View
         this.fragmentManager = getSupportFragmentManager();
@@ -54,8 +62,6 @@ public class MainActivity extends BaseActivity implements MainView, BottomNaviga
         //Selected First Fragment
         if(savedInstanceState == null)
             onNavigationItemSelected(toolbarBottom.getMenu().getItem(0));
-        else
-            findFragment(savedInstanceState.getString(EXTRA_CURRENT_FRAGMENT));
     }
 
     @Override
@@ -64,11 +70,11 @@ public class MainActivity extends BaseActivity implements MainView, BottomNaviga
         outState.putString(EXTRA_CURRENT_FRAGMENT,getCurrentFragment().getTag());
     }
 
-    private void findFragment(String tagFragment){
-        mCurrentFragment = getSupportFragmentManager().findFragmentByTag(tagFragment);
-        replaceFragment(mCurrentFragment,tagFragment);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        applySetting();
     }
-
 
     @Override
     public void setupToolbar() {
@@ -165,6 +171,25 @@ public class MainActivity extends BaseActivity implements MainView, BottomNaviga
     }
 
     @Override
+    public void applySetting() {
+        // Apply Setting Application
+        boolean isRememberMeApp = SharedPrefs.getBoolean(PrefsConst.PREFS_REMEMBER_APP, true);
+        boolean isRemeberReleaseApp = SharedPrefs.getBoolean(PrefsConst.PREFS_REMEMBER_RELEASE_MOVIE, true);
+
+        if(isRememberMeApp)
+            mSettingPresenter.setAlarm(SettingPresenter.TypeAlarm.DAILY_REMINDER,true);
+        else
+            mSettingPresenter.cancelAlarm(SettingPresenter.TypeAlarm.DAILY_REMINDER,false);
+
+        if(isRemeberReleaseApp)
+            mSettingPresenter.setAlarm(SettingPresenter.TypeAlarm.RELEASE_MOVIE,true);
+        else
+            mSettingPresenter.cancelAlarm(SettingPresenter.TypeAlarm.RELEASE_MOVIE,false);
+
+
+    }
+
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         setCheckedToolbarBottom(menuItem.getItemId());
 
@@ -225,9 +250,13 @@ public class MainActivity extends BaseActivity implements MainView, BottomNaviga
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.action_setting_language:
-                Intent mIntent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
+            case R.id.action_setting_general:
+                Intent mIntent = new Intent(getApplicationContext(), SettingActivity.class);
                 startActivity(mIntent);
+                break;
+            case R.id.action_setting_language:
+                Intent mIntentChangeLanguage= new Intent(Settings.ACTION_LOCALE_SETTINGS);
+                startActivity(mIntentChangeLanguage);
                 break;
         }
         return true;

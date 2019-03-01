@@ -1,5 +1,6 @@
 package com.dicoding.kailani.submission.moviecatalogue.network;
 
+
 import com.dicoding.kailani.submission.moviecatalogue.network.response.ResponseMovie;
 
 import retrofit2.Call;
@@ -9,10 +10,10 @@ import retrofit2.http.Query;
 /**
  * Dicoding Academy
  *
- * Submisison 4 Aplikasi Movie Catalogue UI/UX DATABASE
- * Menjadi Developer Expert (MADE)
+ * Final Project Aplikasi Movie Catalogue
+ * Menjadi Android Developer Expert (MADE)
  *
- * Created by kheys on 21/01/19.
+ * Created by kheys on 28/01/19.
  */
 public interface ApiService {
     @GET("search/movie")
@@ -24,7 +25,11 @@ public interface ApiService {
     @GET("discover/movie")
     Call<ResponseMovie> getAllMovies(@Query("api_key") String apiKey,
                                      @Query("language") String language,
-                                     @Query("page") int page);
+                                     @Query("page") int page,
+                                     @Query("primary_release_date.gte") String afterDateRelease,
+                                     @Query("primary_release_date.lte") String beforeDateRelease);
+
+
 
     @GET("movie/now_playing")
     Call<ResponseMovie> getNowPlayingMovies(@Query("api_key") String apiKey,

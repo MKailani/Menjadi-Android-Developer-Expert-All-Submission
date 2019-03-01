@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.moviecatalogue.submission.myfavoriteapp">
 
-
     <!-- Internet Permission-->
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -20,8 +19,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
-        <activity android:name=".view.activity.MainActivity"
-                  android:screenOrientation="portrait">
+        <activity android:name=".view.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -9,10 +9,10 @@ import butterknife.ButterKnife;
 /**
  * Dicoding Academy
  *
- * Submisison 4 Aplikasi Movie Catalogue UI/UX DATABASE
- * Menjadi Developer Expert (MADE)
+ * Final Project Aplikasi Movie Catalogue
+ * Menjadi Android Developer Expert (MADE)
  *
- * Created by kheys on 21/01/19.
+ * Created by kheys on 28/01/19.
  */
 public abstract class BaseViewHolder extends RecyclerView.ViewHolder {
 
@@ -20,5 +20,4 @@ public abstract class BaseViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         ButterKnife.bind(this, itemView);
     }
-
 }

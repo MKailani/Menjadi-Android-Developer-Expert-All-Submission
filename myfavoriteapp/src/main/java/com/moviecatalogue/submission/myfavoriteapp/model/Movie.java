@@ -8,10 +8,10 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Dicoding Academy
  *
- * Submisison 4 Aplikasi Movie Catalogue UI/UX DATABASE
- * Menjadi Developer Expert (MADE)
+ * Final Project Aplikasi Movie Catalogue
+ * Menjadi Android Developer Expert (MADE)
  *
- * Created by kheys on 21/01/19.
+ * Created by kheys on 28/01/19.
  */
 public class Movie implements Parcelable {
     @SerializedName("id")
@@ -42,7 +42,6 @@ public class Movie implements Parcelable {
     private String overview;
     @SerializedName("release_date")
     private String releaseDate;
-
 
     @Override
     public int describeContents() {

@@ -21,14 +21,15 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.dicoding.kailani.submission.moviecatalogue.R;
 import com.dicoding.kailani.submission.moviecatalogue.model.Movie;
 import com.dicoding.kailani.submission.moviecatalogue.network.response.ResponseMovie;
 import com.dicoding.kailani.submission.moviecatalogue.presenter.fragment.SearchViewPresenter;
 import com.dicoding.kailani.submission.moviecatalogue.utils.Utils;
 import com.dicoding.kailani.submission.moviecatalogue.view.activity.DetailMoviesActivity;
-import com.dicoding.kailani.submission.moviecatalogue.view.activity.GeneralView;
 import com.dicoding.kailani.submission.moviecatalogue.view.activity.MainActivity;
+import com.dicoding.kailani.submission.moviecatalogue.view.activity.iview.GeneralView;
 import com.dicoding.kailani.submission.moviecatalogue.view.adapter.MoviesAdapter;
 
 import java.util.ArrayList;
@@ -39,10 +40,10 @@ import butterknife.BindView;
 /**
  * Dicoding Academy
  *
- * Submisison 4 Aplikasi Movie Catalogue UI/UX DATABASE
- * Menjadi Developer Expert (MADE)
+ * Final Project Aplikasi Movie Catalogue
+ * Menjadi Android Developer Expert (MADE)
  *
- * Created by kheys on 21/01/19.
+ * Created by kheys on 28/01/19.
  */
 public class SearchMovieFragment extends BaseFragment implements GeneralView {
 
@@ -146,13 +147,17 @@ public class SearchMovieFragment extends BaseFragment implements GeneralView {
                 mSearchViewPresenter.getAllMovies(page);
             } else {
                 ArrayList<Movie> list = saveInstance.getParcelableArrayList(EXTRA_LIST);
-                counter = saveInstance.getInt(EXTRA_COUNTER);
-                lastItemCounter = saveInstance.getInt(EXTRA_LAST_ITEM);
-                if (list != null)
+                if(list !=null){
+                    counter = saveInstance.getInt(EXTRA_COUNTER);
+                    lastItemCounter = saveInstance.getInt(EXTRA_LAST_ITEM);
                     adapter.addList(list);
-                tvDesc.setVisibility(adapter.getItemCount() == 0 ?
-                        View.VISIBLE : View.GONE);
-                llManager.scrollToPosition(saveInstance.getInt(EXTRA_STATE_SCROLL_POSITION));
+                    tvDesc.setVisibility(adapter.getItemCount() == 0 ?
+                            View.VISIBLE : View.GONE);
+                    llManager.scrollToPosition(saveInstance.getInt(EXTRA_STATE_SCROLL_POSITION));
+                }else{
+                    mSearchViewPresenter.getAllMovies(page);
+                }
+
             }
 
         }

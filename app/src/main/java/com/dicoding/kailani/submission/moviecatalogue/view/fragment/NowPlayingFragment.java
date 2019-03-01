@@ -17,14 +17,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.dicoding.kailani.submission.moviecatalogue.R;
 import com.dicoding.kailani.submission.moviecatalogue.model.Movie;
 import com.dicoding.kailani.submission.moviecatalogue.network.response.ResponseMovie;
 import com.dicoding.kailani.submission.moviecatalogue.presenter.fragment.NowPlayingViewPresenter;
 import com.dicoding.kailani.submission.moviecatalogue.utils.Utils;
 import com.dicoding.kailani.submission.moviecatalogue.view.activity.DetailMoviesActivity;
-import com.dicoding.kailani.submission.moviecatalogue.view.activity.GeneralView;
 import com.dicoding.kailani.submission.moviecatalogue.view.activity.MainActivity;
+import com.dicoding.kailani.submission.moviecatalogue.view.activity.iview.GeneralView;
 import com.dicoding.kailani.submission.moviecatalogue.view.adapter.MoviesAdapter;
 
 import java.util.ArrayList;
@@ -35,10 +36,10 @@ import butterknife.BindView;
 /**
  * Dicoding Academy
  *
- * Submisison 4 Aplikasi Movie Catalogue UI/UX DATABASE
- * Menjadi Developer Expert (MADE)
+ * Final Project Aplikasi Movie Catalogue
+ * Menjadi Android Developer Expert (MADE)
  *
- * Created by kheys on 21/01/19.
+ * Created by kheys on 28/01/19.
  */
 public class NowPlayingFragment extends BaseFragment implements GeneralView, SwipeRefreshLayout.OnRefreshListener {
     public static final String TAG = NowPlayingFragment.class.getSimpleName();
@@ -106,24 +107,21 @@ public class NowPlayingFragment extends BaseFragment implements GeneralView, Swi
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        if (this.isVisible()) {
-            if(adapter != null){
-                if (adapter.getItemCount() > 0) {
-                    adapter.removeProgressBar();
-                    outState.putParcelableArrayList(EXTRA_LIST, new ArrayList<>(adapter.getDataset()));
-                    outState.putInt(EXTRA_COUNTER, counter);
-                    outState.putInt(EXTRA_LAST_ITEM, lastItemCounter);
-                    outState.putInt(EXTRA_STATE_SCROLL_POSITION, llManager.findFirstCompletelyVisibleItemPosition());
-                } else {
-                    if (tempList != null)
-                        outState.putParcelableArrayList(EXTRA_LIST, new ArrayList<>(tempList));
+        if(adapter != null){
+            if (adapter.getItemCount() > 0) {
+                adapter.removeProgressBar();
+                outState.putParcelableArrayList(EXTRA_LIST, new ArrayList<>(adapter.getDataset()));
+                outState.putInt(EXTRA_COUNTER, counter);
+                outState.putInt(EXTRA_LAST_ITEM, lastItemCounter);
+                outState.putInt(EXTRA_STATE_SCROLL_POSITION, llManager.findFirstCompletelyVisibleItemPosition());
+            } else {
+                if (tempList != null)
+                    outState.putParcelableArrayList(EXTRA_LIST, new ArrayList<>(tempList));
 
-                    outState.putInt(EXTRA_COUNTER, 1);
-                    outState.putInt(EXTRA_LAST_ITEM, lastItemCounter);
-                    outState.putInt(EXTRA_STATE_SCROLL_POSITION, llManager.findFirstCompletelyVisibleItemPosition());
-                }
+                outState.putInt(EXTRA_COUNTER, 1);
+                outState.putInt(EXTRA_LAST_ITEM, lastItemCounter);
+                outState.putInt(EXTRA_STATE_SCROLL_POSITION, llManager.findFirstCompletelyVisibleItemPosition());
             }
-
         }
     }
 
@@ -137,17 +135,20 @@ public class NowPlayingFragment extends BaseFragment implements GeneralView, Swi
             rvMovies.setAdapter(adapter);
 
             if (saveInstance == null) {
-                showLoading();
-                mNowPlayingViewPresenter.getAllNowPlayingMovies(page);
+                refreshContent();
             } else {
                 ArrayList<Movie> list = saveInstance.getParcelableArrayList(EXTRA_LIST);
-                counter = saveInstance.getInt(EXTRA_COUNTER);
-                lastItemCounter = saveInstance.getInt(EXTRA_LAST_ITEM);
-                if (list != null)
+                if(list !=null){
+                    counter = saveInstance.getInt(EXTRA_COUNTER);
+                    lastItemCounter = saveInstance.getInt(EXTRA_LAST_ITEM);
                     adapter.addList(list);
-                tvDesc.setVisibility(adapter.getItemCount() == 0 ?
-                        View.VISIBLE : View.GONE);
-                llManager.scrollToPosition(saveInstance.getInt(EXTRA_STATE_SCROLL_POSITION));
+                    tvDesc.setVisibility(adapter.getItemCount() == 0 ?
+                            View.VISIBLE : View.GONE);
+                    llManager.scrollToPosition(saveInstance.getInt(EXTRA_STATE_SCROLL_POSITION));
+                }else{
+                    refreshContent();
+                }
+
             }
 
         }

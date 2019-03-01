@@ -18,11 +18,11 @@ import java.util.List;
 
 /**
  * Dicoding Academy
- * <p>
- * Submisison 4 Aplikasi Movie Catalogue UI/UX DATABASE
- * Menjadi Developer Expert (MADE)
- * <p>
- * Created by kheys on 21/01/19.
+ *
+ * Final Project Aplikasi Movie Catalogue
+ * Menjadi Android Developer Expert (MADE)
+ *
+ * Created by kheys on 28/01/19.
  */
 public class QueryHelper {
 
@@ -148,6 +148,8 @@ public class QueryHelper {
 
         /**
          * Get All Data Movie Favorite
+         * Limit for maximum show movie
+         * offset for step pagination
          */
 
         public List<Movie> getAllData(int limit, int offset) throws SQLiteException {
@@ -246,7 +248,6 @@ public class QueryHelper {
         }
 
     }
-
 
 
     /**

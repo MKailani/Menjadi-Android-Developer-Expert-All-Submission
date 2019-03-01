@@ -19,6 +19,7 @@ android {
         debug {
             buildConfigField "String", "MOVIE_URL", String.format("\"%s\"", "https://api.themoviedb.org/3/")
             buildConfigField "String", "IMAGE_LOAD_URL", String.format("\"%s\"", "https://image.tmdb.org/t/p/w185/")
+            buildConfigField "String", "IMAGE_LOAD_POSTER_URL", String.format("\"%s\"", "https://image.tmdb.org/t/p/w342/")
             buildConfigField "String", "API_KEY", String.format("\"%s\"", "9baedfb896da855a4b9c55f09c735f76")
         }
         release {

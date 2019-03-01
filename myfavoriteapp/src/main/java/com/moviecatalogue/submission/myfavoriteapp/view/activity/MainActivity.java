@@ -20,13 +20,14 @@ import butterknife.BindView;
 
 import static com.moviecatalogue.submission.myfavoriteapp.database.FavoriteMovieDB.CONTENT_URI_FAVORITE;
 
+
 /**
  * Dicoding Academy
  *
- * Submisison 4 Aplikasi Movie Catalogue UI/UX DATABASE
- * Menjadi Developer Expert (MADE)
+ * Final Project Aplikasi Movie Catalogue
+ * Menjadi Android Developer Expert (MADE)
  *
- * Created by kheys on 21/01/19.
+ * Created by kheys on 28/01/19.
  */
 public class MainActivity extends BaseActivity implements MainView,LoaderManager.LoaderCallbacks<Cursor>{
     // TAG
@@ -77,6 +78,7 @@ public class MainActivity extends BaseActivity implements MainView,LoaderManager
     public void load() {
         LoaderManager.getInstance(this).initLoader(LOAD_MOVIE_FAVORITE_ID, null, this);
     }
+
 
     @NonNull
     @Override

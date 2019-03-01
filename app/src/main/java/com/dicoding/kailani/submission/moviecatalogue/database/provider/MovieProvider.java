@@ -11,13 +11,14 @@ import android.support.annotation.Nullable;
 import com.dicoding.kailani.submission.moviecatalogue.App;
 import com.dicoding.kailani.submission.moviecatalogue.database.QueryHelper;
 
+
 /**
  * Dicoding Academy
  *
- * Submisison 4 Aplikasi Movie Catalogue UI/UX DATABASE
- * Menjadi Developer Expert (MADE)
+ * Final Project Aplikasi Movie Catalogue
+ * Menjadi Android Developer Expert (MADE)
  *
- * Created by kheys on 21/01/19.
+ * Created by kheys on 28/01/19.
  */
 public class MovieProvider extends ContentProvider {
 

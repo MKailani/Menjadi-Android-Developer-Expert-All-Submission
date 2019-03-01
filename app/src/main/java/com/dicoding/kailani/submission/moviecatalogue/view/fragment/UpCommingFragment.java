@@ -17,14 +17,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.dicoding.kailani.submission.moviecatalogue.R;
 import com.dicoding.kailani.submission.moviecatalogue.model.Movie;
 import com.dicoding.kailani.submission.moviecatalogue.network.response.ResponseMovie;
 import com.dicoding.kailani.submission.moviecatalogue.presenter.fragment.UpCommingViewPresenter;
 import com.dicoding.kailani.submission.moviecatalogue.utils.Utils;
 import com.dicoding.kailani.submission.moviecatalogue.view.activity.DetailMoviesActivity;
-import com.dicoding.kailani.submission.moviecatalogue.view.activity.GeneralView;
 import com.dicoding.kailani.submission.moviecatalogue.view.activity.MainActivity;
+import com.dicoding.kailani.submission.moviecatalogue.view.activity.iview.GeneralView;
 import com.dicoding.kailani.submission.moviecatalogue.view.adapter.MoviesAdapter;
 
 import java.util.ArrayList;
@@ -35,10 +36,10 @@ import butterknife.BindView;
 /**
  * Dicoding Academy
  *
- * Submisison 4 Aplikasi Movie Catalogue UI/UX DATABASE
- * Menjadi Developer Expert (MADE)
+ * Final Project Aplikasi Movie Catalogue
+ * Menjadi Android Developer Expert (MADE)
  *
- * Created by kheys on 21/01/19.
+ * Created by kheys on 28/01/19.
  */
 public class UpCommingFragment extends BaseFragment implements GeneralView, SwipeRefreshLayout.OnRefreshListener {
 
@@ -70,12 +71,13 @@ public class UpCommingFragment extends BaseFragment implements GeneralView, Swip
     private boolean isLoading = false;
     private List<Movie> tempList;
 
-    public UpCommingFragment() { }
+    public UpCommingFragment() {
+    }
 
     public static UpCommingFragment newInstance() {
-        
+
         Bundle args = new Bundle();
-        
+
         UpCommingFragment fragment = new UpCommingFragment();
         fragment.setArguments(args);
         return fragment;
@@ -104,8 +106,8 @@ public class UpCommingFragment extends BaseFragment implements GeneralView, Swip
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        if(this.isVisible()){
-            if(adapter != null) {
+        if (this.isVisible()) {
+            if (adapter != null) {
                 if (adapter.getItemCount() > 0) {
                     adapter.removeProgressBar();
                     outState.putParcelableArrayList(EXTRA_LIST, new ArrayList<>(adapter.getDataset()));
@@ -137,13 +139,17 @@ public class UpCommingFragment extends BaseFragment implements GeneralView, Swip
                 refreshContent();
             } else {
                 ArrayList<Movie> list = saveInstance.getParcelableArrayList(EXTRA_LIST);
-                counter = saveInstance.getInt(EXTRA_COUNTER);
-                lastItemCounter = saveInstance.getInt(EXTRA_LAST_ITEM);
-                if (list != null)
+                if (list != null) {
+                    counter = saveInstance.getInt(EXTRA_COUNTER);
+                    lastItemCounter = saveInstance.getInt(EXTRA_LAST_ITEM);
                     adapter.addList(list);
-                tvDesc.setVisibility(adapter.getItemCount() == 0 ?
-                        View.VISIBLE : View.GONE);
-                llManager.scrollToPosition(saveInstance.getInt(EXTRA_STATE_SCROLL_POSITION));
+                    tvDesc.setVisibility(adapter.getItemCount() == 0 ?
+                            View.VISIBLE : View.GONE);
+                    llManager.scrollToPosition(saveInstance.getInt(EXTRA_STATE_SCROLL_POSITION));
+                }else{
+                    refreshContent();
+                }
+
             }
 
         }
@@ -239,7 +245,7 @@ public class UpCommingFragment extends BaseFragment implements GeneralView, Swip
 
     @Override
     public void refreshContent() {
-        if(this.isVisible()){
+        if (this.isVisible()) {
             showLoading();
             onRefresh();
         }
@@ -248,7 +254,7 @@ public class UpCommingFragment extends BaseFragment implements GeneralView, Swip
     @Override
     public void showLoading() {
         Log.i(TAG, "show loading");
-        
+
         if (this.isVisible() && srlRefresh != null && page == 1)
             srlRefresh.setRefreshing(true);
 
@@ -274,7 +280,7 @@ public class UpCommingFragment extends BaseFragment implements GeneralView, Swip
     public void loadContentError() {
 
         Log.i(TAG, "load content error");
-        if (this.isVisible() && tvDesc !=null)
+        if (this.isVisible() && tvDesc != null)
             tvDesc.setVisibility(adapter.getItemCount() == 0 ? View.VISIBLE
                     : View.GONE);
     }
@@ -294,7 +300,7 @@ public class UpCommingFragment extends BaseFragment implements GeneralView, Swip
         memoryRelease();
     }
 
-    private void resetList(){
+    private void resetList() {
         this.page = 1;
         this.counter = 1;
         this.lastItemCounter = 0;

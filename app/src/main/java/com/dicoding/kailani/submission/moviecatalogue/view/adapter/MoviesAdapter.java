@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.dicoding.kailani.submission.moviecatalogue.R;
 import com.dicoding.kailani.submission.moviecatalogue.model.Movie;
 import com.dicoding.kailani.submission.moviecatalogue.utils.Utils;
-import com.dicoding.kailani.submission.moviecatalogue.view.activity.GeneralView;
+import com.dicoding.kailani.submission.moviecatalogue.view.activity.iview.GeneralView;
 import com.dicoding.kailani.submission.moviecatalogue.view.adapter.viewholder.BaseViewHolder;
 import com.dicoding.kailani.submission.moviecatalogue.view.adapter.viewholder.ProgressViewHolder;
 
@@ -23,10 +23,10 @@ import butterknife.BindView;
 /**
  * Dicoding Academy
  *
- * Submisison 4 Aplikasi Movie Catalogue UI/UX DATABASE
- * Menjadi Developer Expert (MADE)
+ * Final Project Aplikasi Movie Catalogue
+ * Menjadi Android Developer Expert (MADE)
  *
- * Created by kheys on 21/01/19.
+ * Created by kheys on 28/01/19.
  */
 public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 

@@ -8,4 +8,6 @@
     <color name="green">#0b8f84</color>
     <color name="grey">#b3b3b3</color>
     <color name="red">#d40000</color>
+
+    <color name="blackOpa60">#8c000000</color>
 </resources>

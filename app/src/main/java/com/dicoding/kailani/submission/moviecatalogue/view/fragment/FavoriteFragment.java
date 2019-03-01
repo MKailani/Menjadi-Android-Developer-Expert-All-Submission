@@ -23,8 +23,8 @@ import com.dicoding.kailani.submission.moviecatalogue.network.response.ResponseM
 import com.dicoding.kailani.submission.moviecatalogue.presenter.fragment.FavoriteViewPresenter;
 import com.dicoding.kailani.submission.moviecatalogue.utils.Utils;
 import com.dicoding.kailani.submission.moviecatalogue.view.activity.DetailMoviesActivity;
-import com.dicoding.kailani.submission.moviecatalogue.view.activity.GeneralView;
 import com.dicoding.kailani.submission.moviecatalogue.view.activity.MainActivity;
+import com.dicoding.kailani.submission.moviecatalogue.view.activity.iview.GeneralView;
 import com.dicoding.kailani.submission.moviecatalogue.view.adapter.MoviesAdapter;
 
 import java.util.ArrayList;
@@ -35,10 +35,10 @@ import butterknife.BindView;
 /**
  * Dicoding Academy
  *
- * Submisison 4 Aplikasi Movie Catalogue UI/UX DATABASE
- * Menjadi Developer Expert (MADE)
+ * Final Project Aplikasi Movie Catalogue
+ * Menjadi Android Developer Expert (MADE)
  *
- * Created by kheys on 21/01/19.
+ * Created by kheys on 28/01/19.
  */
 public class FavoriteFragment extends BaseFragment implements GeneralView, SwipeRefreshLayout.OnRefreshListener {
 
