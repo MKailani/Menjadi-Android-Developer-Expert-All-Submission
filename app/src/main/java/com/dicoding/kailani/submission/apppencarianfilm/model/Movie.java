@@ -180,7 +180,7 @@ public class Movie implements Parcelable {
         dest.writeString(this.releaseDate);
     }
 
-    protected Movie(Parcel in) {
+    private Movie(Parcel in) {
         this.voteCount = in.readInt();
         this.id = in.readInt();
         this.video = in.readByte() != 0;

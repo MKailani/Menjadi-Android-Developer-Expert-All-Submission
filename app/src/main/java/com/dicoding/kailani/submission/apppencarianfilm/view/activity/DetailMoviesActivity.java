@@ -32,9 +32,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 public class DetailMoviesActivity extends BaseActivity implements DetailMovieView, SwipeRefreshLayout.OnRefreshListener {
     // TAG
-    public static final String TAG = DetailMoviesActivity.class.getSimpleName();
+    private static final String TAG = DetailMoviesActivity.class.getSimpleName();
 
-    public static final String EXTRA_IS_LOADING = "extra:is_loading";
+    private static final String EXTRA_IS_LOADING = "extra:is_loading";
     public static final String EXTRA_MOVIE_DETAIL = "extra:movie_detail";
     public static final String EXTRA_TITLE = "extra:title";
 

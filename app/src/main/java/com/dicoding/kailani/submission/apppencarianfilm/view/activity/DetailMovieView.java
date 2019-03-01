@@ -8,7 +8,7 @@ import com.dicoding.kailani.submission.apppencarianfilm.view.BaseView;
  *
  * Created by Kailani on 04/01/19.
  */
-public interface DetailMovieView extends BaseView {
+interface DetailMovieView extends BaseView {
     void initView();
 
     void setupRecyclerview();

@@ -28,8 +28,8 @@ import butterknife.BindView;
  */
 public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<Movie> mDataset = new ArrayList<>();
-    private MainView mView;
+    private final List<Movie> mDataset = new ArrayList<>();
+    private final MainView mView;
     private final static int VIEW_PROGRESS = 0;
     private final static int VIEW_ITEM = 1;
 

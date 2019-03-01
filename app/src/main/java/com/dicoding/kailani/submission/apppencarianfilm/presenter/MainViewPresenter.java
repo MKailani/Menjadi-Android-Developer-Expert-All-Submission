@@ -19,7 +19,7 @@ import retrofit2.Response;
  * Created by Kailani on 04/01/19.
  */
 public class MainViewPresenter {
-    private MainView mView;
+    private final MainView mView;
     private RestClient mRestClient;
     private final static String API = BuildConfig.API_KEY;
     private final static String LANGUGAGE = "en-US";

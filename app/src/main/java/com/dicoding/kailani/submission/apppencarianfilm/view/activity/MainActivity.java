@@ -37,11 +37,11 @@ import butterknife.BindView;
  */
 public class MainActivity extends BaseActivity implements MainView {
     // TAG
-    public static final String TAG = MainActivity.class.getSimpleName();
-    public static final String EXTRA_LIST = "extra:list";
-    public static final String EXTRA_COUNTER = "extra:counter";
-    public static final String EXTRA_LAST_ITEM = "extra:last_item";
-    public static final String EXTRA_STATE_SCROLL_POSITION = "extra:state_scroll_position";
+    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String EXTRA_LIST = "extra:list";
+    private static final String EXTRA_COUNTER = "extra:counter";
+    private static final String EXTRA_LAST_ITEM = "extra:last_item";
+    private static final String EXTRA_STATE_SCROLL_POSITION = "extra:state_scroll_position";
 
     @BindView(R.id.tv_description)
     protected TextView tvDesc;
@@ -286,7 +286,7 @@ public class MainActivity extends BaseActivity implements MainView {
         this.isLoading = false;
     }
 
-    public boolean isLoading() {
+    private boolean isLoading() {
         return isLoading;
     }
 

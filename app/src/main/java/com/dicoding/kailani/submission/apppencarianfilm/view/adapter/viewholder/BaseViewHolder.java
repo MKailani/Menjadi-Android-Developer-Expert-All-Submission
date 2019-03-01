@@ -14,14 +14,9 @@ import butterknife.Unbinder;
  * Created by Kailani on 04/01/19.
  */
 public abstract class BaseViewHolder extends RecyclerView.ViewHolder {
-    private Unbinder unbinder;
 
-    public BaseViewHolder(@NonNull View itemView) {
+    protected BaseViewHolder(@NonNull View itemView) {
         super(itemView);
-        unbinder = ButterKnife.bind(this, itemView);
-    }
-
-    public void clearView() {
-        if (unbinder != null) unbinder.unbind();
+        ButterKnife.bind(this, itemView);
     }
 }

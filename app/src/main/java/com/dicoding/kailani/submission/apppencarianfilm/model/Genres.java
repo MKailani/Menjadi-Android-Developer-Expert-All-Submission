@@ -19,7 +19,7 @@ public class Genres {
     @SerializedName("name")
     private String name;
 
-    public int getId() {
+    private int getId() {
         return id;
     }
 
