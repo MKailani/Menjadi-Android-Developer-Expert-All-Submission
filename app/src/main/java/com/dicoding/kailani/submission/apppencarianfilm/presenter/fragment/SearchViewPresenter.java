@@ -18,8 +18,8 @@ import retrofit2.Response;
  * Created by Kailani on 06/01/19 -> Submssion 2
  */
 public class SearchViewPresenter {
-    private GeneralView mView;
-    private RestClient mRestClient;
+    private final GeneralView mView;
+    private final RestClient mRestClient;
     private final static String API = BuildConfig.API_KEY;
     private final static String LANGUGAGE = "en-US";
 

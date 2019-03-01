@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,8 +23,8 @@ import com.dicoding.kailani.submission.apppencarianfilm.network.response.Respons
 import com.dicoding.kailani.submission.apppencarianfilm.presenter.fragment.NowPlayingViewPresenter;
 import com.dicoding.kailani.submission.apppencarianfilm.utils.Utils;
 import com.dicoding.kailani.submission.apppencarianfilm.view.activity.DetailMoviesActivity;
-import com.dicoding.kailani.submission.apppencarianfilm.view.activity.MainActivity;
 import com.dicoding.kailani.submission.apppencarianfilm.view.activity.GeneralView;
+import com.dicoding.kailani.submission.apppencarianfilm.view.activity.MainActivity;
 import com.dicoding.kailani.submission.apppencarianfilm.view.adapter.MoviesAdapter;
 
 import java.util.ArrayList;
@@ -42,10 +41,10 @@ import butterknife.BindView;
 public class NowPlayingFragment extends BaseFragment implements GeneralView, SwipeRefreshLayout.OnRefreshListener {
     public static final String TAG = NowPlayingFragment.class.getSimpleName();
 
-    public static final String EXTRA_LIST = "extra:list";
-    public static final String EXTRA_COUNTER = "extra:counter";
-    public static final String EXTRA_LAST_ITEM = "extra:last_item";
-    public static final String EXTRA_STATE_SCROLL_POSITION = "extra:state_scroll_position";
+    private static final String EXTRA_LIST = "extra:list";
+    private static final String EXTRA_COUNTER = "extra:counter";
+    private static final String EXTRA_LAST_ITEM = "extra:last_item";
+    private static final String EXTRA_STATE_SCROLL_POSITION = "extra:state_scroll_position";
 
     @BindView(R.id.tv_description)
     protected TextView tvDesc;
@@ -100,11 +99,6 @@ public class NowPlayingFragment extends BaseFragment implements GeneralView, Swi
 
         setupRecyclerView(savedInstanceState);
         setupListener();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
     }
 
     @Override
@@ -230,7 +224,7 @@ public class NowPlayingFragment extends BaseFragment implements GeneralView, Swi
                         totalItemCount = llManager.getItemCount();
                         lastVisibleItem = llManager.findLastVisibleItemPosition();
                         int visibleThreshold = 1;
-                        if (lastItemCounter > 19 && !isLoading() && totalItemCount <= lastVisibleItem + visibleThreshold) {
+                        if (lastItemCounter > 19 && isLoaded() && totalItemCount <= lastVisibleItem + visibleThreshold) {
                             page = counter;
                             mNowPlayingViewPresenter.getAllNowPlayingMovies(page);
                         }
@@ -270,8 +264,8 @@ public class NowPlayingFragment extends BaseFragment implements GeneralView, Swi
         this.isLoading = false;
     }
 
-    public boolean isLoading() {
-        return isLoading;
+    private boolean isLoaded() {
+        return !isLoading;
     }
 
     @Override

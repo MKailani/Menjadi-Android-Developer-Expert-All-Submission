@@ -20,7 +20,7 @@ import com.dicoding.kailani.submission.apppencarianfilm.view.fragment.UpCommingF
 
 import butterknife.BindView;
 
-import static com.dicoding.kailani.submission.apppencarianfilm.view.fragment.NowPlayingFragment.*;
+import static com.dicoding.kailani.submission.apppencarianfilm.view.fragment.NowPlayingFragment.newInstance;
 
 /**
  * Dicoding Academy
@@ -30,8 +30,7 @@ import static com.dicoding.kailani.submission.apppencarianfilm.view.fragment.Now
  */
 public class MainActivity extends BaseActivity implements MainView, BottomNavigationView.OnNavigationItemSelectedListener {
     // TAG
-    public static final String TAG = MainActivity.class.getSimpleName();
-    public static final String EXTRA_CURRENT_FRAGMENT = "extra:current_fragment";
+    private static final String EXTRA_CURRENT_FRAGMENT = "extra:current_fragment";
 
     private Fragment mCurrentFragment = null;
     private FragmentManager fragmentManager;
@@ -72,12 +71,6 @@ public class MainActivity extends BaseActivity implements MainView, BottomNaviga
 
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
-
-    @Override
     public void setupToolbar() {
         setSupportActionBar(toolbar);
 
@@ -108,7 +101,7 @@ public class MainActivity extends BaseActivity implements MainView, BottomNaviga
                     goToTopFragment();
                 }
 
-            };
+            }
 
             // Check backstack fragment
             if(TextUtils.isEmpty(tag)){
@@ -125,7 +118,7 @@ public class MainActivity extends BaseActivity implements MainView, BottomNaviga
         }
     }
 
-    public void setCheckedToolbarBottom(int resId){
+    private void setCheckedToolbarBottom(int resId){
         int index =0;
         switch (resId){
             case  R.id.bottom_now_playing:
@@ -142,7 +135,7 @@ public class MainActivity extends BaseActivity implements MainView, BottomNaviga
         toolbarBottom.getMenu().getItem(index).setChecked(true);
     }
 
-    public Fragment getCurrentFragment() {
+    private Fragment getCurrentFragment() {
         mCurrentFragment = getSupportFragmentManager().findFragmentById(R.id.fl_screen);
         return mCurrentFragment;
     }
@@ -204,7 +197,7 @@ public class MainActivity extends BaseActivity implements MainView, BottomNaviga
         backStackPopper();
     }
 
-    public void goToTopFragment(){
+    private void goToTopFragment(){
         fragmentManager = getSupportFragmentManager();
         fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
     }

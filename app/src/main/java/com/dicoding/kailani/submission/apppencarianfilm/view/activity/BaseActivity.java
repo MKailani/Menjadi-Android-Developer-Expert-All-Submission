@@ -38,24 +38,19 @@ public abstract class BaseActivity extends AppCompatActivity {
         mUnbinder.unbind();
     }
 
-    protected CharSequence toText(Double value) {
+    CharSequence toText(Double value) {
         return String.valueOf(value);
     }
 
-    protected CharSequence toText(int value) {
+    CharSequence toText(int value) {
         return String.valueOf(value);
     }
 
-    protected CharSequence toText(Date value) {
-        SimpleDateFormat sdfFormater = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-        return sdfFormater.format(value);
-    }
-
-    protected CharSequence toReleaseDate(String value) {
+    CharSequence toReleaseDate(String value) {
         return TextUtils.isEmpty(value) ? "Comming Soon" : value;
     }
 
-    protected void goToHomeScreen(){
+    void goToHomeScreen(){
         Intent i = new Intent(Intent.ACTION_MAIN);
         i.addCategory(Intent.CATEGORY_HOME);
         startActivity(i);

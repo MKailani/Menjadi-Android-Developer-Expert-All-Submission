@@ -8,7 +8,7 @@ import android.support.v4.app.Fragment;
  *
  * Created by Kailani on 06/01/19 -> Submssion 2
  */
-public interface MainView {
+interface MainView {
     void setupToolbar();
     void changeTitleBar(String text);
     void replaceFragment(Fragment view);

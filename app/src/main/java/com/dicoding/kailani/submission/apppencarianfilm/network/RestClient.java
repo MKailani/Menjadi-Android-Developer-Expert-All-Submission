@@ -18,7 +18,7 @@ import static com.dicoding.kailani.submission.apppencarianfilm.BuildConfig.MOVIE
 public class RestClient {
 
     private static final String BASE_URL = MOVIE_URL;
-    private ApiService apiService;
+    private final ApiService apiService;
     private static final int TIMEOUT_DEFAULT = 20;
     private static final int TIMEOUT_LONG = 120;
 

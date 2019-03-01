@@ -24,7 +24,7 @@ import butterknife.BindView;
  */
 public class GenreAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<Genres> mGenreList = new ArrayList<>();
+    private final List<Genres> mGenreList = new ArrayList<>();
 
     public void addList(List<Genres> genres) {
         this.mGenreList.addAll(genres);

@@ -19,8 +19,4 @@ public class ResponseGenres {
     public List<Genres> getGenres() {
         return genres;
     }
-
-    public void setGenres(List<Genres> genres) {
-        this.genres = genres;
-    }
 }
