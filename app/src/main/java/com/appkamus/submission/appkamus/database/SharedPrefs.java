@@ -1,0 +1,34 @@
+package com.appkamus.submission.appkamus.database;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
+/**
+ * Dicoding Academy
+ *
+ * Submisison 3 Aplikasi Kamus
+ * Menjadi Developer Expert (MADE)
+ *
+ * Created by kheys on 13/01/19.
+ */
+public class SharedPrefs {
+    private static SharedPreferences prefs;
+
+    public static void init(Context context) {
+        if(prefs == null){
+            prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        }
+    }
+
+    public static void setBoolean(String key,Boolean value) {
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean(key, value);
+        editor.apply();
+    }
+
+    public static boolean getBoolean(String key, boolean defaultValue) {
+        return prefs.getBoolean(key,defaultValue);
+    }
+
+}
